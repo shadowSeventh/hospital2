@@ -55,7 +55,6 @@ allprojects {
             dependency('com.querydsl:querydsl-collections:4.1.4')
             dependency('com.querydsl:querydsl-core:4.1.4')
             dependency('com.querydsl:querydsl-jpa:4.1.4')
-            dependency('com.querydsl:querydsl-mongodb:4.1.4')
 
             dependency('com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.7')
             dependency('com.fasterxml.jackson.module:jackson-module-parameter-names:2.8.7')
@@ -66,15 +65,7 @@ allprojects {
 
 
             dependency('org.apache.curator:curator-framework:2.10.0')
-
-            //dependency('org.apache.httpcomponents:httpclient:4.5.3')
-
-
-            dependency('io.swagger:swagger-core:1.5.16')  // 1.5.12
-            dependency('io.swagger:swagger-jaxrs:1.5.16')  // 1.5.12
-            dependency('io.swagger:swagger-jersey2-jaxrs:1.5.16')  // 1.5.12
-            dependency('io.swagger:swagger-annotations:1.5.16')
-            dependency('org.webjars:swagger-ui:3.0.19')
+            dependency('org.kie.modules:org-apache-commons-lang3:6.5.0.Final')
 
             dependency('io.reactivex.rxjava2:rxjava:2.0.7')
 
