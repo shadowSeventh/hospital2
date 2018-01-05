@@ -1,0 +1,261 @@
+<div flex layout="column" class="ks-bargainView">
+    <div class="ks-white-header" layout="row">
+        <div class="back-button" flex="20" ng-click="fallbackPage()">
+            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>
+        </div>
+        <h1 flex>砍价活动</h1>
+        <!--ui-sref="main.bargainApp.unionOrder({from:'purchase'})"-->
+        <div class="right-button" flex="20" ui-sref="main.bargainApp.bargain.bargainEdit({id:bargainDataview.id,form:true})">编辑</div>
+    </div>
+    <md-divider></md-divider>
+    <md-content flex style="background: #f5f5f5">
+
+
+
+        <div class="content">
+
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    店铺名称
+                </div>
+                <div class="right" flex>
+                    {{bargainDataview.shopName}}
+                </div>
+            </div>
+
+
+            <md-divider></md-divider>
+
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    活动标题
+                </div>
+                <div class="right" flex>
+                    {{bargainDataview.name}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    生效时间
+                </div>
+                <div class="right" flex>
+                    {{bargainDataview.beginTime | date:'yyyy'}}年{{bargainDataview.beginTime | date:'M' }}月{{bargainDataview.beginTime | date:'d'}}日
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    过期时间
+                </div>
+                <div class="right" flex>
+                    {{bargainDataview.endTime | date:'yyyy'}}年{{bargainDataview.endTime | date:'M' }}月{{bargainDataview.endTime | date:'d'}}日
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center"  ng-click="goEdit('rule')">
+                <div class="left">
+                    规则说明
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            查看详细
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center"   ng-click="goEdit('desp')">
+                <div class="left">
+                    活动图文
+                </div>
+                <div class="right" flex >
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div>
+                            查看详细
+                            <md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content">
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    商品名称
+                </div>
+                <div class="right" flex>
+                    {{bargainDataview.awardName}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    商品数量
+                </div>
+                <div class="right" flex>
+                    {{bargainDataview.awardNum}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    起始价格
+                </div>
+                <div class="right" flex>
+                    {{bargainDataview.awardPrice/100 | num:2}}元
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    最低价格
+                </div>
+                <div class="right" flex>
+                    {{bargainDataview.minTargetPrice/100 | num:2}}元
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    商品图片
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div class="itemImg">
+                            <img ng-src="{{bargainDataview.awardImg}}">
+                            <!--请上传图片-->
+                            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow-right-s"></md-icon>-->
+                       <!---->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    新人砍价范围
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div layout="row" layout-align="center center">
+                            {{bargainDataview.userTypeRandom.newUser.lowerPrice/100 | num:2}} ~ {{bargainDataview.userTypeRandom.newUser.higherPrice/100 | num:2}} 元
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    老会员砍价范围
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div layout="row" layout-align="center center">
+                            {{bargainDataview.userTypeRandom.oldUser.lowerPrice/100 | num:2}} ~ {{bargainDataview.userTypeRandom.oldUser.higherPrice/100 | num:2}} 元
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                   购买方式
+                </div>
+                <div class="right" flex>
+                    <div class="right-R" layout="row" layout-align="end center">
+                        <div ng-if="bargainDataview.receiveType == 'COMPLETEBUY'">
+                            到最低价购买
+                        </div>
+
+                        <div ng-if="bargainDataview.receiveType == 'ONLINEBUY'">
+                            随时购买
+                        </div>
+                        <div ng-if="bargainDataview.receiveType == 'LINEBUY'">
+                            联系商家
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    微信分享标题
+                </div>
+                <div class="right" flex>
+                    {{bargainDataview.shareTitle}}
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <div class="content-tab" layout="row" layout-align="satrt center">
+                <div class="left">
+                    微信分享描述
+                </div>
+                <div class="right" flex>
+                    {{bargainDataview.shareDesp}}
+                </div>
+            </div>
+        </div>
+    </md-content>
+
+    <div class="footBottom" layout="column">
+        <md-divider style="border-color:#E53467"></md-divider>
+        <div class="btn" flex layout="row" layout-align="center center">
+            <div flex class="tab" style="text-align: center" ng-click="goView(bargainDataview.id)">预览</div>
+            <div class="line"></div>
+            <div flex class="tab" style="text-align: center" ng-click="share(bargainDataview.id)">分享</div>
+            <div class="line"></div>
+            <div flex class="tab" style="text-align: center" ng-click="changeStatus(bargainDataview)" ng-if="bargainDataview.status == 'CLOSED'">启用</div>
+            <div flex class="tab" style="text-align: center" ng-click="changeStatus(bargainDataview)" ng-if="bargainDataview.status == 'ENABLE'">禁用</div>
+            <div class="line"></div>
+            <div flex class="tab" style="text-align: center" ui-sref="main.bargainApp.bargain.joinNum({id:bargainDataview.id})">参与人</div>
+            <div class="line"></div>
+            <div flex class="tab" style="text-align: center" ui-sref="main.bargainApp.bargain.successPeo({id:bargainDataview.id,form:'detail'})">成功人</div>
+        </div>
+    </div>
+
+
+
+    <!--<div class="dialog-pay" layout="column">-->
+        <!--<div class="top" flex></div>-->
+        <!--<div class="con">-->
+            <!--<div class="title" layout="row">-->
+                <!--<div class="left">取消</div>-->
+                <!--<div class="name" flex>选择支付方式</div>-->
+                <!--<div class="right">确定</div>-->
+            <!--</div>-->
+            <!--<md-divider></md-divider>-->
+            <!--<div class="tab">到最低价购买</div>-->
+            <!--<md-divider></md-divider>-->
+            <!--<div class="tab">随时购买</div>-->
+            <!--<md-divider></md-divider>-->
+            <!--<div class="tab">联系商家</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+
+
+
+
+    <!--遮罩-->
+    <div class="mask" ng-if="mask" style="position: absolute"   ng-click="maskHide()">
+        <div class="maskButton1">
+            <!--<div class="shareKnow" md-font-icon="ks-arrow_left"></div>-->
+        </div>
+    </div>
+
+
+
+</div>
+
+
+

@@ -1,0 +1,10 @@
+rootProject.name = 'hospital'
+
+include 'hospital-domain'
+include 'hospital-api'
+include 'hospital-core'
+include 'hospital-service'
+include 'hospital-server'
+include 'hospital-admin-front'
+
+
