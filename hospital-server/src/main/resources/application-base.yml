@@ -62,14 +62,20 @@ net.kingsilk.qh.bargain:
       enabled:      false
       host:         prod11.kingsilk.net
       port:         9999
+
+
 spring:
-  data:
-    jpa:
-      repositories:
-        enabled: true
-          host: 'prod14.kingsilk.net'
-            port: 27017
-            database: 'qh-bargain'
-            username: 'qh-bargain'
-            password: '{qhAgency2017]'
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/restful?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: root
+      initialize: true
+  jpa:
+      database: mysql
+      show-sql: true
+      hibernate:
+        ddl-auto: update
+        naming:
+          strategy: org.hibernate.cfg.ImprovedNamingStrategy
 

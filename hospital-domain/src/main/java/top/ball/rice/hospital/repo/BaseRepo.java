@@ -1,6 +1,7 @@
 package top.ball.rice.hospital.repo;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.NoRepositoryBean;
 
 import java.io.Serializable;
@@ -10,5 +11,5 @@ import java.io.Serializable;
  */
 @NoRepositoryBean
 public interface BaseRepo<T, ID extends Serializable>
-        extends CrudRepository<T, ID> {
+        extends JpaRepository<T, ID>, JpaSpecificationExecutor<T> {
 }

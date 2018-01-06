@@ -1,11 +1,15 @@
 package top.ball.rice.hospital.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * 员工表
  */
+@Entity
+@Table(name = "staff")
 public class Staff extends User {
     /**
      * 是否已经禁用。
