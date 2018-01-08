@@ -36,21 +36,8 @@ class Controller {
         $rootScope = _$rootScope;
         /////////////////////////////////
         // loginService.loginCtl(true, $location.absUrl());
-        $scope.brandAppId = $stateParams.brandAppId;
+        $scope.hospitalId = $stateParams.hospitalId;
 
-
-        let getAdc = () => {
-            $http({
-                method: 'GET',
-                url: conf.apiPath + "/common/getAdcList",
-                params: {},
-            }).then(function (resp) {
-                $rootScope.adc = resp.data;
-            })
-        };
-        if (!$rootScope.adc) {
-            getAdc();
-        }
 
 
 

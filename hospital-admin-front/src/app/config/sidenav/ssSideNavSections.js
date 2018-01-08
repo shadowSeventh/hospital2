@@ -10,11 +10,12 @@ export default  [
         pages: [
             {
                 name: '应用信息',
-                state: 'main.brandApp.application.applicationList',
+                state: 'main.hospital.home',
                 authorities: ['APPLICATION_A', 'SA','APPLICATION_R'],
             },
         ]
-    },{
+    },
+    {
         name: '商家管理',
         type: 'toggle',
         // authorities: ['BRANDAPP_A', 'SA'],
@@ -25,8 +26,14 @@ export default  [
         pages: [
             {
                 name: '商家信息',
-                state: 'main.brandApp.business.businessList',
-                authorities: ['BRANDAPP_A', 'SA','BRANDCOM_R'],
+                state: 'main.hospital.home',
+                authorities: ['hospital_A', 'SA','BRANDCOM_R'],
+                show:true,
+            },
+            {
+                name: '商家信息',
+                state: 'main.hospital.home',
+                authorities: ['hospital_A', 'SA','BRANDCOM_R'],
             },
         ]
     }

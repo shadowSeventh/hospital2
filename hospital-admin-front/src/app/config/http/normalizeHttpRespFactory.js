@@ -108,20 +108,6 @@ function handleResp(response) {
  */
 function handleRespErr(response) {
     console.log('http请求出错',response);
-    if (response.status == '401' || response.data.status == '401') {
-        jso.wipeTokens();
-        store.set(conf.brandAppId, '');
-        store.set(conf.token, '');
-        location.reload()
-    } else if (response.status == '502') {
-        console.log("网络连接错误");
-    }else if (response.status == '403') {
-        console.log("403错误没权限");
-        jso.wipeTokens();
-        // store.set(conf.brandAppId, null);
-        // store.set(conf.token, null);
-        // location.reload();
-    }
 
 
     // 是否跳过

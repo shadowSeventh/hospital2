@@ -1,6 +1,6 @@
 confUrlRouter.$inject = ['$urlRouterProvider'];
 function confUrlRouter($urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/hospital/home');
 }
 
 

@@ -37,7 +37,7 @@ class Controller {
 
 
 
-        $scope.brandApps = [{
+        $scope.hospitals = [{
            id:11111111111111111,
             name:'钱皇',
         },{
@@ -67,17 +67,17 @@ class Controller {
                     // console.log(`login  => /api/user/info => ${resp.data.data}`);
                     if (!resp.data.data.phone) {
                         //如果手机号不存在,跳转到绑定手机号页面
-                        $state.go("main.brandApp.center.main");
+                        $state.go("main.hospital.center.main");
                     } else {
-                        //获取用户brandApp列表
-                        // TODO  1. 检查 localStorage 中是否有 brandAppId, 且该 brandAppId真是有效，且当前用户是该 brandApp 的员工，
+                        //获取用户hospital列表
+                        // TODO  1. 检查 localStorage 中是否有 hospitalId, 且该 hospitalId真是有效，且当前用户是该 hospital 的员工，
                         //          则直接跳转，return
-                        //          清空 localStorage 中的 brandAppId
-                        if (loginService.getbrandAppId()) {
-                            $state.go("main.brandApp.home");
+                        //          清空 localStorage 中的 hospitalId
+                        if (loginService.gethospitalId()) {
+                            $state.go("main.hospital.home");
                         }
                         else {
-                            $scope.getbrandAppList();
+                            $scope.gethospitalList();
                         }
                     }
                 }, function () {
@@ -86,14 +86,14 @@ class Controller {
             );
         };
 
-        ///获取用户brandApp列表
-        $scope.getbrandAppList = () => {
-            // console.log(`${TAG} => getbrandAppList`);
-            $state.go("main.brandApp.home", {brandAppId: '59782691f8fdbc1f9b2c4323'}, {reload: true});
+        ///获取用户hospital列表
+        $scope.gethospitalList = () => {
+            // console.log(`${TAG} => gethospitalList`);
+            $state.go("main.hospital.home", {hospitalId: '59782691f8fdbc1f9b2c4323'}, {reload: true});
 
             // $http({
             //     method: "GET",
-            //     url: conf.apiPath + "/brandApp/bindPhoneAndList",
+            //     url: conf.apiPath + "/hospital/bindPhoneAndList",
             //     params: {},
             //     headers: {
             //         'Authorization': 'Bearer ' + loginService.getAccessToken(),
@@ -103,10 +103,10 @@ class Controller {
             //             alert("暂无绑定的组织");
             //             return;
             //         }
-            //         //TODO 选择brandApp页面
-            //         //loginService.setbrandAppId(resp.data.data.recList[0].id);
+            //         //TODO 选择hospital页面
+            //         //loginService.sethospitalId(resp.data.data.recList[0].id);
             //
-            //         $state.go("main.brandApp.shelves", {brandAppId: resp.data.data.recList[0].id}, {reload: true});
+            //         $state.go("main.hospital.shelves", {hospitalId: resp.data.data.recList[0].id}, {reload: true});
             //         //$scope.fallbackPage();
             //     }, function (resp) {
             //         // alertService.alert('您不是代理商无权访问', null, '确定');
@@ -133,14 +133,14 @@ class Controller {
         $scope.logout = () => {
             jso.wipeTokens();
             loginService.setAccessToken(null);
-            loginService.setbrandAppId(null);
+            loginService.sethospitalId(null);
             location.href = location.protocol + conf.oauthPath + "/logout";
             // console.log("logout");
         };
         ///返回上级
         $scope.fallbackPage = function () {
             // console.log(`${TAG} => fallbackPage`);
-            $state.go("main.brandApp.home", null, {reload: true});
+            $state.go("main.hospital.home", null, {reload: true});
             //
             // if (history.length === 1) {
             //     $state.go("main.shelves", null, {reload: true});

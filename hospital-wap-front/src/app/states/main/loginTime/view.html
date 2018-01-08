@@ -12,10 +12,10 @@
         <!--<h1 flex laoyut="row" layout-align="center center" style="text-align: center">-->
             <!--<span flex>登录中...</span>-->
         <!--</h1>-->
-        <select class="select" flex ng-change="queryAddress(data.brandApp)"
-                data-ng-model="data.brandApp">
+        <select class="select" flex ng-change="queryAddress(data.hospital)"
+                data-ng-model="data.hospital">
             <option value="">请选择</option>
-            <option ng-repeat="brandApp in brandApps" value="{{brandApp.id}}">{{brandApp.name}}</option>
+            <option ng-repeat="hospital in hospitals" value="{{hospital.id}}">{{hospital.name}}</option>
         </select>
 
     </md-content>

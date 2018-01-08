@@ -1,5 +1,6 @@
 <ul class="menu">
-    <li class="li-wrap" ng-repeat="section in menu.sections" ng-if="section.show">
+    <!--ng-if="section.show"-->
+    <li class="li-wrap" ng-repeat="section in menu.sections" >
         <h2 ss-style-color="{'color': 'primary.A100'}" class="menu-heading md-subhead" ng-if="section.type === 'heading'">
             <md-icon ng-if="section.icon"
                      md-font-set="{{section.icon.mdFontSet}}"
