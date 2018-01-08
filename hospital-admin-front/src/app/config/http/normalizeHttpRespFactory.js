@@ -1,8 +1,7 @@
 import store from "store";
 import conf from "../../conf";
 
-
-var $log, $q, $injector;
+var $log, $q;
 
 // 返回非200相应，且响应内容为空。
 let defaultEmptyRespErrMsg = {
@@ -16,6 +15,7 @@ let defaultEmptyRespErrMsg = {
 };
 
 function genDefaultErrJson(response) {
+
     let defaultErrMsg = defaultEmptyRespErrMsg[response.status];
     let defautlRespJson = {
         code: 'ERROR',
@@ -27,7 +27,6 @@ function genDefaultErrJson(response) {
 
 
 function process200RawMsg(jsonData) {
-
     if (!jsonData.raw) {
         return
     }
@@ -37,7 +36,6 @@ function process200RawMsg(jsonData) {
 }
 
 function processErrRawMsg(jsonData) {
-
     if (!jsonData.raw) {
         return
     }
@@ -45,7 +43,7 @@ function processErrRawMsg(jsonData) {
 
     let defaultErrMsg = defaultEmptyRespErrMsg[response.status];
 
-    jsonData.msg = defaultErrMsg ? defaultErrMsg : "系统错误，请稍后重试";
+    jsonData.msg = defaultErrMsg ? defaultErrMsg : "系统错误，请稍后重试"
 
     delete jsonData.raw
 }
@@ -70,33 +68,7 @@ function processErrJson(response) {
  * 处理 200 等正常情况
  */
 function handleResp(response) {
-    if(response.data.status == '10025' || response.data.status == '10027'){
-        jso.wipeTokens();
-        var $http = $injector.get('$http');
-        var alertService = $injector.get('alertService');
-        store.set(conf.bargainAppId, '');
-        store.set(conf.token, '');
-        alertService.msgAlert("exclamation-circle", response.data.data);
-        $http({
-            method: "POST",
-            url: "https:" + conf.oauthPath +"/logout",
-            headers: {},
-            params: {},
-            withCredentials:true,
-        }).success(function (resp) {
-            location.reload();
-        },function(resp){
-            console.log('ERR', resp);
-        });
-    }
 
-
-
-    if (response.data.status == '10301' || response.data.status == '10302' || response.data.status == '10303' || response.data.status == '10304' || response.data.status == '10305') {
-        console.log('response.data', response.data.data);
-        var stateService = $injector.get('$state');
-        // stateService.go('main.bargainApp.joinUs');
-    }
     // 是否跳过
     if (response.config.skipNomorelize) {
         return response;
@@ -122,7 +94,7 @@ function handleResp(response) {
     }
 
     if (respData.code === "SUCCESS") {
-        process200RawMsg(respData);
+        process200RawMsg(respData)
         return response;
     }
 
@@ -138,41 +110,20 @@ function handleRespErr(response) {
     console.log('http请求出错',response);
     if (response.status == '401' || response.data.status == '401') {
         jso.wipeTokens();
-        store.set(conf.bargainAppId, '');
+        store.set(conf.brandAppId, '');
         store.set(conf.token, '');
         location.reload()
     } else if (response.status == '502') {
         console.log("网络连接错误");
+    }else if (response.status == '403') {
+        console.log("403错误没权限");
+        jso.wipeTokens();
+        // store.set(conf.brandAppId, null);
+        // store.set(conf.token, null);
+        // location.reload();
     }
-    else if (response.status == '500') {
-        console.log("服务器异常");
-        console.log(response);
-        var stateService = $injector.get('$state');
-        var loginService = $injector.get('loginService');
-        if(response.data.status == '10025' || response.data.status == '10027'){
-            jso.wipeTokens();
-            var $http = $injector.get('$http');
-            var alertService = $injector.get('alertService');
-            store.set(conf.bargainAppId, '');
-            store.set(conf.token, '');
-            alertService.msgAlert("exclamation-circle", response.data.data);
-            $http({
-                method: "POST",
-                url: "https:" + conf.oauthPath +"/logout",
-                headers: {},
-                params: {},
-                withCredentials:true,
-            }).success(function (resp) {
-                location.reload();
-            },function(resp){
-                console.log('ERR', resp);
-            });
-        }
 
-    }
-    else if (response.status == '403') {
-        console.log("服务器认证失败")
-    }
+
     // 是否跳过
     if (response.config.skipNomorelize) {
         return $q.reject(response);
@@ -201,11 +152,11 @@ function handleRespErr(response) {
     return $q.reject(response);
 }
 
-normalizeHttpRespFactory.$inject = ['$log', '$q', '$injector'];
-function normalizeHttpRespFactory(_$log, _$q, _$injector) {
+normalizeHttpRespFactory.$inject = ['$log', '$q'];
+function normalizeHttpRespFactory(_$log, _$q) {
     $log = _$log;
     $q = _$q;
-    $injector = _$injector;
+
     return {
         // request: function(config){...}
         // requestError: function(rejection){...}

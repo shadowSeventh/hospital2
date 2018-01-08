@@ -1,74 +1,52 @@
-import conf from "../../conf";
-
-var $scope,
-    $rootScope,
-    $http,
-    $state,
-    $log,
-    $mdBottomSheet,
+import conf from "../../conf"
+var $rootScope,
+    $scope,
+    ssSideNav,
     loginService,
-    $mdDialog,
-    $timeout,
-    $stateParams,
-    $location;
+    sidenavTab;
 class Controller {
-    constructor(_$scope,
-                _$rootScope,
-                _$http,
-                _$state,
-                _$log,
-                _$mdBottomSheet,
+
+    constructor(_$rootScope,
+                _$scope,
+                _ssSideNav,
                 _loginService,
-                _$mdDialog,
-                _$timeout,
-                _$stateParams,
-                _$location) {
-        $scope = _$scope;
-        $http = _$http;
-        $mdDialog = _$mdDialog;
-        $state = _$state;
-        $timeout = _$timeout;
+                _sidenavTab) {
         loginService = _loginService;
-        $log = _$log;
-        $stateParams = _$stateParams;
-        $mdBottomSheet = _$mdBottomSheet;
-        $location = _$location;
         $rootScope = _$rootScope;
-        /////////////////////////////////
-        // loginService.loginCtl(true, $location.absUrl());
-        $scope.bargainAppId = $stateParams.bargainAppId;
-
-        //
-        // let getAdc = () => {
-        //     $http({
-        //         method: 'GET',
-        //         url: conf.apiPath + "/common/getAdcList",
-        //         params: {},
-        //     }).then(function (resp) {
-        //         $rootScope.adc = resp.data;
-        //     })
-        // };
-        // if (!$rootScope.adc) {
-        //     getAdc();
-        // }
+        $scope = _$scope;
+        ssSideNav = _ssSideNav;
+        this.sidenavTab = sidenavTab = _sidenavTab;
 
 
+        $scope.menu = ssSideNav;
 
+        //$rootScope.ssSideNav 在config.js中有用到，勿删
+        $rootScope.ssSideNav = ssSideNav;
+        ////登出
+        $scope.logout = () => {
+            jso.wipeTokens();
+            loginService.setAccessToken();
+            loginService.setbrandAppId();
+            location.href = location.protocol + conf.oauthPath + "/logout";
+        };
+
+    }
+
+    close(tab, $event) {
+        //console.log("------000 close", arguments);
+        if ($event) {
+            $event.stopPropagation();
+        }
+        sidenavTab.closeTab(tab);
     }
 }
 
 Controller.$inject = [
-    '$scope',
     '$rootScope',
-    '$http',
-    '$state',
-    '$log',
-    '$mdBottomSheet',
+    '$scope',
+    'ssSideNav',
     'loginService',
-    '$mdDialog',
-    '$timeout',
-    '$stateParams',
-    '$location'
+    'sidenavTab'
 ];
 
 export default Controller ;

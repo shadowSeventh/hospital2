@@ -1,51 +1,66 @@
-import conf                                                     from "../conf";
-import sMain                                                    from "./main";
-import sMainOtherMain                                           from "./main/otherMain";
-import sMainBindPhone                                           from "./main/bindPhone";
-import sMainWxLogin                                             from "./main/wxLogin";
-import sMainBargainApp                                            from "./main/bargainApp";
-import sMainLoginTime                                           from "./main/loginTime";
-// import   sMainJoinUs                                         from "./main/joinUS";
-import sMainBargainAppHome                                        from "./main/bargainApp/home";
+import   conf                               from "../conf";
+import   sMain                              from "./main";
 
 
+import   sMainContentMain                   from "./main/contentMain";
+import   sMainBindPhone                     from "./main/bindPhone";
+import   sMainLogin                         from "./main/login";
+import   sMainBrandApp                     from "./main/brandApp";
+import   sMainLoginTime                     from "./main/loginTime";
+import   sMainAuthorizationImg              from "./main/authorizationImg";
+import   sMainBrandAppHome                 from "./main/brandApp/home";
 
 
-//砍价活动后台
-import sMainBargainAppBargain                                     from "./main/bargainApp/bargain";
+//应用
+import  sMainBrandAppApplication           from  './main/brandApp/application';
+import  sMainBrandAppApplicationList       from  './main/brandApp/application/applicationList';
+import  sMainBrandAppInformationEdit       from  './main/brandApp/application/informationEdit';
 
-import sMainBargainAppBargainHome                                 from "./main/bargainApp/bargain/bargainHome";
-import sMainBargainAppBargainAdd                                  from "./main/bargainApp/bargain/bargainAdd";
-import sMainBargainAppBargainEdit                                  from "./main/bargainApp/bargain/bargainEdit";
-import sMainBargainAppBargainView                                 from "./main/bargainApp/bargain/bargainView";
-import sMainBargainAppBargainJoinNum                              from "./main/bargainApp/bargain/joinNum";
-import sMainBargainAppBargainTextImg                              from "./main/bargainApp/bargain/textImg";
-import sMainBargainAppBargainSuccecssPeo                          from "./main/bargainApp/bargain/succecssPeo";
+//应用角色
+import  sMainBrandAppAppUserList           from  './main/brandApp/application/appUserList';
+import  sMainBrandAppAppUserAdd            from  './main/brandApp/application/appUserAdd';
+import  sMainBrandAppAppUserView            from  './main/brandApp/application/appUserView';
 
-import sMainBargainAppBargainPriceList                            from "./main/bargainApp/bargain/priceList";
+//商家
+import  sMainBrandAppBusiness              from  './main/brandApp/business';
+import  sMainBrandAppBusinessList          from  './main/brandApp/business/businessList';
+import  sMainBrandAppBusinessAdd           from  './main/brandApp/business/businessAdd';
+import  sMainBrandAppBusinessEdit          from  './main/brandApp/business/businessEdit';
 
-
-
+//商家应用
+import  sMainBrandAppBusApplication        from  './main/brandApp/business/busApplication';
+import  sMainBrandAppBusAppAdd             from  './main/brandApp/business/busAppAdd';
+import  sMainBrandAppBusAppView            from  './main/brandApp/business/busAppView';
 
 
 
 export default angular.module(`${conf.app}.states`, [
     sMain.name,
-    sMainOtherMain.name,
+    sMainContentMain.name,
+
+
     sMainBindPhone.name,
-    sMainWxLogin.name,
-    sMainBargainApp.name,
+    sMainLogin.name,
+    sMainBrandApp.name,
     sMainLoginTime.name,
-    sMainBargainAppHome.name,
+    sMainBrandAppHome.name,
+    sMainAuthorizationImg.name,
 
 
-    sMainBargainAppBargain.name,
-    sMainBargainAppBargainHome.name,
-    sMainBargainAppBargainAdd.name,
-    sMainBargainAppBargainEdit.name,
-    sMainBargainAppBargainView.name,
-    sMainBargainAppBargainJoinNum.name,
-    sMainBargainAppBargainTextImg.name,
-    sMainBargainAppBargainSuccecssPeo.name,
-    sMainBargainAppBargainPriceList.name,
+    sMainBrandAppApplication.name,
+    sMainBrandAppApplicationList.name,
+    sMainBrandAppInformationEdit.name,
+    sMainBrandAppAppUserList.name,
+    sMainBrandAppAppUserAdd.name,
+    sMainBrandAppAppUserView.name,
+
+    sMainBrandAppBusiness.name,
+    sMainBrandAppBusinessList.name,
+    sMainBrandAppBusinessAdd.name,
+    sMainBrandAppBusinessEdit.name,
+
+    sMainBrandAppBusApplication.name,
+    sMainBrandAppBusAppAdd.name,
+    sMainBrandAppBusAppView.name,
 ])
+

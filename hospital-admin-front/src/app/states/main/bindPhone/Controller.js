@@ -39,7 +39,7 @@ class Controller {
         //返回上级
         vm.fallbackPage = () => {
             if (history.length === 1) {
-                $state.go("main.wxLogin", null, {reload: true});
+                $state.go("main.login", null, {reload: true});
             } else {
                 history.back();
             }
@@ -147,7 +147,7 @@ class Controller {
                 return;
             }
             if (!vm.isCodeNumTrue) {
-                alertService.msgAlert("cancle", "正确输入验证码");
+                alertService.msgAlert("cancle", "输入验证码");
                 return;
             }
             $http({
@@ -162,12 +162,9 @@ class Controller {
                 }
             }).then(function (resp) {
                     alertService.msgAlert("success", "绑定成功");
-                    $state.go('main.loginTime');
-                }, function (resp) {
+                    $state.go('main.loginTime')
+                }, function () {
                     //error
-                    console.log(resp.data);
-                    alertService.msgAlert("cancle", resp.data.message);
-
                 }
             );
         };

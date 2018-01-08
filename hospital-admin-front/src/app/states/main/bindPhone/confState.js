@@ -8,7 +8,6 @@ function confState($stateProvider) {
      */
     $stateProvider.state("main.bindPhone", {
         url: "/bindPhone",  //不写则会默认显示  ?providerID&client_id&redirect_uri&scope&state
-
         sticky: true,
         deepStateRedirect: true,
         views: {

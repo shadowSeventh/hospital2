@@ -4,8 +4,10 @@ import uiRouter from "angular-ui-router";
 import confState from "./confState";
 import "./css.scss";
 
-export default angular.module(`${conf.app}.states.loginTime`, [
-        uiRouter
-    ])
-    .config(confState)
-;
+export default angular.module(`${conf.app}.states.main.loginTime`, [
+    uiRouter
+]).config(confState);
+
+
+
+

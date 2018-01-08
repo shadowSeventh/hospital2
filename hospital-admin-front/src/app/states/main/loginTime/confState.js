@@ -4,13 +4,10 @@ import html from "!html-loader?minimize=true!./view.html";
 confState.$inject = ['$stateProvider'];
 function confState($stateProvider) {
     /**
-     * 测试
+     * 提供主要的布局结构：左侧纵向菜单栏，右侧则主要内容区域。
      */
     $stateProvider.state("main.loginTime", {
-        url: "/loginTime",  //不写则会默认显示  ?providerID&client_id&redirect_uri&scope&state
-
-        sticky: true,
-        deepStateRedirect: true,
+        url: "/loginTime",
         views: {
             "loginTime@main": {
                 template: html,

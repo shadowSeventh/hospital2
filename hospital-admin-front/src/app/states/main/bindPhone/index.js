@@ -4,8 +4,8 @@ import uiRouter from "angular-ui-router";
 import confState from "./confState";
 import "./css.scss";
 
-export default angular.module(`${conf.app}.states.bindPhone`, [
-        uiRouter
-    ])
+export default angular.module(`${conf.app}.states.main.bindPhone`, [
+    uiRouter
+])
     .config(confState)
 ;

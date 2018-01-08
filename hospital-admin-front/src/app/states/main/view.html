@@ -1,5 +1,6 @@
-<div class="ks-main" flex layout="row" ui-view="bindPhone" ng-show="$state.includes('main.bindPhone')"></div>
-<div class="ks-main" flex layout="row" ui-view="wxLogin" ng-show="$state.includes('main.wxLogin')"></div>
-<div class="ks-main" flex layout="row" ui-view="bargainApp" ng-show="$state.includes('main.bargainApp')"></div>
-<div class="ks-main" flex layout="row" ui-view="loginTime" ng-show="$state.includes('main.loginTime')"></div>
-<div class="ks-main" flex layout="row" ui-view="otherMain" ng-show="$state.includes('main.otherMain')"></div>
+<div ui-view="bindPhone" flex="" ng-show="$state.includes('main.bindPhone')"></div>
+<div ui-view="login" flex="" ng-show="$state.includes('main.login')"></div>
+<div ui-view="brandApp" flex="" ng-show="$state.includes('main.brandApp')" style="height: 100%;"></div>
+<div ui-view="loginTime" flex="" ng-show="$state.includes('main.loginTime')"></div>
+<div ui-view="authorizationImg" flex="" ng-show="$state.includes('main.authorizationImg')"></div>
+<div ui-view="contentMain" flex="" ng-show="$state.includes('main.contentMain')"></div>

@@ -1,0 +1,12 @@
+.bgImg {
+
+  background: url("../../../../assets/img/bg.jpg") no-repeat -3px 0px;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.welcome{
+  margin: 30%;
+  background: #77FFFF;
+}

@@ -1,60 +1,36 @@
 import conf from "../../../conf";
-import html from "!html-loader?minimize=true!./dialog.html";
 
-let $scope,
-    $mdDialog,
-    alertService,
-    $rootScope,
-    $interval,
+
+var $scope,
     $state,
-    $stateParams,
-    loginService,
-    $http;
+    $http,
+    alertService,
+    loginService;
 class Controller {
     constructor(_$scope,
-                _$mdDialog,
-                _$interval,
-                _$rootScope,
-                _alertService,
                 _$state,
-                _$stateParams,
-                _loginService,
-                _$http) {
-        /////////////////////////////////////通用注入
+                _$http,
+                _alertService,
+                _loginService) {
         $scope = _$scope;
-        $mdDialog = _$mdDialog;
-        $state = _$state;
-        $interval = _$interval;
-        alertService = _alertService;
-        $rootScope = _$rootScope;
         $http = _$http;
         loginService = _loginService;
-        $stateParams = _$stateParams;
+        $state = _$state;
+        alertService = _alertService;
+        ////登录类型，参数
+        const loginType = {
+            WX: "loginType=WX&autoCreateUser",
+            WX_SCAN: "loginType=WX_SCAN&autoCreateUser",
+            PASSWORD: "loginType=PASSWORD"
+        };
 
-        ////////////////////////////////////变量定义
-        const TAG = "main/loginTime ";
+        const TAG = "main/loginTime";
         console.log(`==> ${TAG}`);
-
-
-
-        $scope.bargainApps = [{
-           id:11111111111111111,
-            name:'钱皇',
-        },{
-            id:222222222222222,
-            name:'三月三',
-        },{
-            id:3333333333333,
-            name:'江南古韵',
-        },{
-            id:4444444444444,
-            name:'更多',
-        }];
-
 
         //获取用户手机号
         $scope.getUserPhone = () => {
             console.log(`${TAG} => getUserPhone`);
+
             $http({
                 method: "GET",
                 url: conf.oauthPath + "/api/user/info",
@@ -67,17 +43,19 @@ class Controller {
                     console.log(`login  => /api/user/info => ${resp.data.data}`);
                     if (!resp.data.data.phone) {
                         //如果手机号不存在,跳转到绑定手机号页面
-                        $state.go("main.bargainApp.center.main");
+                        $state.go("main.bindPhone");``
                     } else {
-                        //获取用户bargainApp列表
-                        // TODO  1. 检查 localStorage 中是否有 bargainAppId, 且该 bargainAppId真是有效，且当前用户是该 bargainApp 的员工，
+                        //获取用户brandApp列表
+
+                        // TODO  1. 检查 localStorage 中是否有 brandAppId, 且该 brandAppId真是有效，且当前用户是该 brandApp 的员工，
                         //          则直接跳转，return
-                        //          清空 localStorage 中的 bargainAppId
-                        if (loginService.getbargainAppId()) {
-                            $state.go("main.bargainApp.home");
+                        //          清空 localStorage 中的 brandAppId
+
+                        if (loginService.getbrandAppId()) {
+                            $state.go("main.brandApp.home", {brandAppId:'59782691f8fdbc1f9b2c4323'}, {reload: true});
                         }
                         else {
-                            $scope.getbargainAppList();
+                            $scope.getbrandAppList();
                         }
                     }
                 }, function () {
@@ -86,14 +64,12 @@ class Controller {
             );
         };
 
-        ///获取用户bargainApp列表
-        $scope.getbargainAppList = () => {
-            console.log(`${TAG} => getbargainAppList`);
-            $state.go("main.bargainApp.home", {bargainAppId: '59782691f8fdbc1f9b2c4323'}, {reload: true});
-
+        ///获取用户brandApp列表
+        $scope.getbrandAppList = () => {
+            console.log(`${TAG} => getbrandAppList`);
             // $http({
             //     method: "GET",
-            //     url: conf.apiPath + "/bargainApp/bindPhoneAndList",
+            //     url: conf.apiPath + "/brandApp/bindPhoneAndList",
             //     params: {},
             //     headers: {
             //         'Authorization': 'Bearer ' + loginService.getAccessToken(),
@@ -103,68 +79,37 @@ class Controller {
             //             alert("暂无绑定的组织");
             //             return;
             //         }
-            //         //TODO 选择bargainApp页面
-            //         //loginService.setbargainAppId(resp.data.data.recList[0].id);
+            //         //TODO 选择brandApp页面
+            //         //loginService.setbrandAppId(resp.data.data.recList[0].id);
             //
-            //         $state.go("main.bargainApp.shelves", {bargainAppId: resp.data.data.recList[0].id}, {reload: true});
+            //         console.log('brandAppId ============', resp.data.data.recList[0].id);
+            //
+                    $state.go("main.brandApp.home", {brandAppId:'59782691f8fdbc1f9b2c4323'}, {reload: true});
             //         //$scope.fallbackPage();
             //     }, function (resp) {
-            //         // alertService.alert('您不是代理商无权访问', null, '确定');
-            //         $mdDialog.show({
-            //             template: html,
-            //             parent: angular.element(document.body).find('#qh-activity-wap-front'),
-            //             clickOutsideToClose: true,
-            //             controllerAs: "vmd",
-            //             fullscreen: false,
-            //             controller: ['$scope', '$mdDialog', '$rootScope', "$interval", function ($scope, $mdDialog, $rootScope, $interval) {
-            //                 var vmd = this;
-            //                 vmd.cancel = function () {
-            //                     $mdDialog.cancel();
-            //                 };
-            //             }],
-            //         })
+            //         alertService.msgAlert("cancle", resp.data.data.message);
             //     }
             // );
         };
-
-        // $scope.getUserPhone();
-
+        $scope.getUserPhone();
         ////登出
         $scope.logout = () => {
             jso.wipeTokens();
             loginService.setAccessToken(null);
-            loginService.setbargainAppId(null);
             location.href = location.protocol + conf.oauthPath + "/logout";
-            console.log("logout");
         };
-        ///返回上级
-        $scope.fallbackPage = function () {
-            console.log(`${TAG} => fallbackPage`);
-            $state.go("main.bargainApp.home", null, {reload: true});
-            //
-            // if (history.length === 1) {
-            //     $state.go("main.shelves", null, {reload: true});
-            // } else {
-            //     history.back();
-            // }
-        };
-
     }
+
+
 }
 
-Controller
-    .$inject = [
+Controller.$inject = [
     '$scope',
-    '$mdDialog',
-    '$interval',
-    '$rootScope',
-    'alertService',
     '$state',
-    '$stateParams',
+    '$http',
+    'alertService',
     'loginService',
-    '$http'
+
 ];
 
-export
-default
-Controller;
+export default Controller ;
