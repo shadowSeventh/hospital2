@@ -20,52 +20,52 @@ function addressServiceFactory($http, loginService, $rootScope,$stateParams) {
 
 
 
-    function getProvince() {
-        $http({
-            method: "GET",
-            url: conf.apiPath + "/authorities/getAuthorities",
-            headers: {},
-            data: {}
-        }).then(function (data) {
-            console.log("999999999999", data);
-            return data;
+    // function getProvince() {
+    //     $http({
+    //         method: "GET",
+    //         url: conf.apiPath + "/authorities/getAuthorities",
+    //         headers: {},
+    //         data: {}
+    //     }).then(function (data) {
+    //         console.log("999999999999", data);
+    //         return data;
+    //
+    //     }, function (response) {
+    //     });
+    // }
 
-        }, function (response) {
-        });
-    }
-
-    function getCitys(provinceId) {
-        $http({
-            method: "GET",
-            url: conf.apiPath + "/authorities/getAuthorities",
-            headers: {},
-            data: {
-                provinceId: provinceId,
-            }
-        }).then(function (data) {
-            console.log("88888888888888", data);
-            return data;
-
-        }, function (response) {
-        });
-    }
+    // function getCitys(provinceId) {
+    //     $http({
+    //         method: "GET",
+    //         url: conf.apiPath + "/authorities/getAuthorities",
+    //         headers: {},
+    //         data: {
+    //             provinceId: provinceId,
+    //         }
+    //     }).then(function (data) {
+    //         console.log("88888888888888", data);
+    //         return data;
+    //
+    //     }, function (response) {
+    //     });
+    // }
 
 
-    function getArea(cityId) {
-        $http({
-            method: "GET",
-            url: conf.apiPath + "/authorities/getAuthorities",
-            headers: {},
-            data: {
-                cityId: cityId,
-            }
-        }).then(function (data) {
-            console.log("9999999999999999", data);
-            return data;
-
-        }, function (response) {
-        });
-    }
+    // function getArea(cityId) {
+    //     $http({
+    //         method: "GET",
+    //         url: conf.apiPath + "/authorities/getAuthorities",
+    //         headers: {},
+    //         data: {
+    //             cityId: cityId,
+    //         }
+    //     }).then(function (data) {
+    //         console.log("9999999999999999", data);
+    //         return data;
+    //
+    //     }, function (response) {
+    //     });
+    // }
 
 
     return {

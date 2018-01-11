@@ -54,45 +54,45 @@ function authServiceFactory($http, loginService,$injector,$state,$q) {
 
     function setAuthorities(brandAppId,storeId) {
         var deferred = $q.defer();
-        $http({
-            method: "GET",
-            url: conf.apiPath + "/brandApp/" + brandAppId +'/shop/'+ storeId + "/authorities",
-            data: {},
-            headers: {
-                'Authorization': 'Bearer ' + store.get(conf.token),
-                'brandApp-Id': brandAppId,
-                'shopId':storeId
-            }
-        }).then(function (data) {
-                if(data.data.data){
-                    store.set(conf.authorSet, data.data.data)
-                    deferred.resolve(true);//这就是等待的结果
-                    console.log('212121212',deferred);
-                }else {
-                    store.set(conf.authorSet,null);
-                }
-        },function (response) {
-            store.set(conf.authorSet,null);
-            if(response.status == '401'){
-                jso.wipeTokens();
-                loginService.setAccessToken(null);
-                loginService.setbrandAppId(null);
-                $http({
-                    method: "POST",
-                    url: "https:" + conf.oauthPath +"/logout",
-                    headers: {},
-                    params: {},
-                    withCredentials:true,
-                }).success(function (resp) {
-                    // console.log('data', resp);
-                    location.reload();
-                },function(resp){
-                    console.log('ERR', resp);
-                });
-            }else if(response.data.status == '10029'){
-                $state.go('main.brandApp.authorities');      //-------跳转到无权限页面
-            }
-        });
+        // $http({
+        //     method: "GET",
+        //     url: conf.apiPath + "/brandApp/" + brandAppId +'/shop/'+ storeId + "/authorities",
+        //     data: {},
+        //     headers: {
+        //         'Authorization': 'Bearer ' + store.get(conf.token),
+        //         'brandApp-Id': brandAppId,
+        //         'shopId':storeId
+        //     }
+        // }).then(function (data) {
+        //         if(data.data.data){
+        //             store.set(conf.authorSet, data.data.data)
+        //             deferred.resolve(true);//这就是等待的结果
+        //             console.log('212121212',deferred);
+        //         }else {
+        //             store.set(conf.authorSet,null);
+        //         }
+        // },function (response) {
+        //     store.set(conf.authorSet,null);
+        //     if(response.status == '401'){
+        //         jso.wipeTokens();
+        //         loginService.setAccessToken(null);
+        //         loginService.setbrandAppId(null);
+        //         $http({
+        //             method: "POST",
+        //             url: "https:" + conf.oauthPath +"/logout",
+        //             headers: {},
+        //             params: {},
+        //             withCredentials:true,
+        //         }).success(function (resp) {
+        //             // console.log('data', resp);
+        //             location.reload();
+        //         },function(resp){
+        //             console.log('ERR', resp);
+        //         });
+        //     }else if(response.data.status == '10029'){
+        //         $state.go('main.brandApp.authorities');      //-------跳转到无权限页面
+        //     }
+        // });
         return deferred.promise;
     }
 

@@ -153,11 +153,11 @@ function handleRespErr(response) {
 
 
     }
-    else if (response.status == '403') {
-        console.log("无权限访问");
-        var $state = $injector.get('$state');
-        $state.go('main.brandApp.authorities');
-    }
+    // else if (response.status == '403') {
+    //     console.log("无权限访问");
+    //     var $state = $injector.get('$state');
+    //     $state.go('main.brandApp.authorities');
+    // }
     // 是否跳过
     if (response.config.skipNomorelize) {
         return $q.reject(response);

@@ -32,22 +32,22 @@ function loginServiceFactory($q, $http, $state, $stateParams,$location) {
      * @param required getAuthorities
      */
 
-    let getAuthorities = () => {
-        $http({
-            method: "GET",
-            url: conf.apiPath + "/brandApp/" + $stateParams.brandAppId +'/shopId/'+ $stateParams.storeId + "/authorities",
-            data: {},
-            headers: {
-                'Authorization': 'Bearer ' + store.get(conf.token),
-                'brandApp-Id': $stateParams.brandAppId,
-            }
-        }).then(function (resp) {
-                console.log('respTop,check', resp);
-            }, function (error) {
-                console.log(error);
-            }
-        );
-    };
+    // let getAuthorities = () => {
+    //     $http({
+    //         method: "GET",
+    //         url: conf.apiPath + "/brandApp/" + $stateParams.brandAppId +'/shopId/'+ $stateParams.storeId + "/authorities",
+    //         data: {},
+    //         headers: {
+    //             'Authorization': 'Bearer ' + store.get(conf.token),
+    //             'brandApp-Id': $stateParams.brandAppId,
+    //         }
+    //     }).then(function (resp) {
+    //             console.log('respTop,check', resp);
+    //         }, function (error) {
+    //             console.log(error);
+    //         }
+    //     );
+    // };
     // getCheck();
     /**
      * 判断是否登录，未登录跳转到登录页
