@@ -3,20 +3,17 @@ package top.ball.rice.hospital.domain;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 /**
  * 行政区划代码
  */
 @Entity
-public class Adc {
+public class Adc extends Base{
 
-    /**
-     * 编码
-     */
-    @Id
-    private String id;
 
-    @Id
+
     private String no;
 
     /**
@@ -30,5 +27,27 @@ public class Adc {
      */
     private String name;
 
+    public String getNo() {
+        return no;
+    }
 
+    public void setNo(String no) {
+        this.no = no;
+    }
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

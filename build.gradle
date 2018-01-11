@@ -63,7 +63,7 @@ allprojects {
             dependency('org.apache.poi:poi:3.15')
             dependency('org.apache.poi:poi-ooxml:3.15')
 
-
+            dependency('mysql:mysql-connector-java:8.0.8-dmr')
             dependency('org.apache.curator:curator-framework:2.10.0')
             dependency('org.kie.modules:org-apache-commons-lang3:6.5.0.Final')
 

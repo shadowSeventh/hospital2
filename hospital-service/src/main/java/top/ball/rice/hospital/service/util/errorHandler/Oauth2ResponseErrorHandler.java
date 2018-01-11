@@ -8,7 +8,6 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.UnknownHttpStatusCodeException;
-import top.ball.rice.hospital.api.ErrStatusException;
 
 import java.io.IOException;
 import java.io.InputStream;

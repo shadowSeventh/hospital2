@@ -1,13 +1,10 @@
 package top.ball.rice.hospital.repo;
 
 
+import org.springframework.stereotype.Repository;
 import top.ball.rice.hospital.domain.Adc;
 
-import java.util.List;
-
+@Repository
 public interface AdcRepo extends BaseRepo<Adc, String> {
 
-    public abstract List<Adc> findAllByParent(Adc adc);
-
-    public abstract Adc findOneByNo(String no);
 }

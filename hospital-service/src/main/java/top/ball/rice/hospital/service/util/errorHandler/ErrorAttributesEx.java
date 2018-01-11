@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.web.DefaultErrorAttributes;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestAttributes;
-import top.ball.rice.hospital.api.ErrStatusException;
 
 import java.util.Map;
 

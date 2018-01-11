@@ -1,16 +1,17 @@
 package top.ball.rice.hospital.domain;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 员工表
  */
 @Entity
-@Table(name = "staff")
-public class Staff extends User {
+@Table
+public class Staff extends Base {
     /**
      * 是否已经禁用。
      * <p>
@@ -22,13 +23,13 @@ public class Staff extends User {
      * 权限列表。
      * 暂时定义为有子活动的权限集合，有该子活动，就有权使用该子活动
      */
-    private Set<String> authorities = new HashSet<>();
+    @ElementCollection
+    private List<String> authorities = new ArrayList<>();
 
     /**
      * 备注
      */
     private String memo;
-
 
     public boolean isDisabled() {
         return disabled;
@@ -38,11 +39,11 @@ public class Staff extends User {
         this.disabled = disabled;
     }
 
-    public Set<String> getAuthorities() {
+    public List<String> getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(Set<String> authorities) {
+    public void setAuthorities(List<String> authorities) {
         this.authorities = authorities;
     }
 

@@ -2,20 +2,17 @@ import conf from "../../conf"
 var $rootScope,
     $scope,
     ssSideNav,
-    loginService,
-    sidenavTab;
+    loginService;
 class Controller {
 
     constructor(_$rootScope,
                 _$scope,
                 _ssSideNav,
-                _loginService,
-                _sidenavTab) {
+                _loginService) {
         loginService = _loginService;
         $rootScope = _$rootScope;
         $scope = _$scope;
         ssSideNav = _ssSideNav;
-        this.sidenavTab = sidenavTab = _sidenavTab;
 
 
         $scope.menu = ssSideNav;
@@ -37,7 +34,6 @@ class Controller {
         if ($event) {
             $event.stopPropagation();
         }
-        sidenavTab.closeTab(tab);
     }
 }
 
@@ -46,7 +42,6 @@ Controller.$inject = [
     '$scope',
     'ssSideNav',
     'loginService',
-    'sidenavTab'
 ];
 
 export default Controller ;

@@ -1,14 +1,11 @@
 package top.ball.rice.hospital.domain;
 
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
@@ -16,35 +13,31 @@ import java.util.Objects;
  * Created by zcw on 3/13/17.
  * 通用的6个字段
  */
-@Entity
-public abstract class Base {
+@MappedSuperclass
+public class Base implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected String id;
 
     /**
      * 创建时间
      */
-    @CreatedDate
     protected Date dateCreated;
 
     /**
      * 创建者的ID
      */
-    @CreatedBy
     protected String createdBy;
 
     /**
      * 最后修改日期
      */
-    @LastModifiedDate
     protected Date lastModifiedDate;
 
     /**
      * 最后更新者的ID
      */
-    @LastModifiedBy
     protected String lastModifiedBy;
 
     /**

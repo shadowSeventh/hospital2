@@ -24,7 +24,6 @@ artifacts {
 
 
 dependencies {
-    compile project(":hospital-api")
     compile project(":hospital-domain")
     compile project(":hospital-service")
 

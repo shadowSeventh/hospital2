@@ -4,7 +4,7 @@ var $rootScope,
     $scope,
     ssSideNav,
     loginService,
-    sidenavTab,
+    // sidenavTab,
     $state,
     $http,
     authService,
@@ -17,7 +17,7 @@ class Controller {
                 _$scope,
                 _ssSideNav,
                 _loginService,
-                _sidenavTab,
+                // _sidenavTab,
                 _$state,
                 _$http,
                 _authService,
@@ -34,7 +34,7 @@ class Controller {
         authService = _authService;
         $mdMedia = _$mdMedia;
         $mdSidenav = _$mdSidenav;
-        this.sidenavTab = sidenavTab = _sidenavTab;
+        // this.sidenavTab = sidenavTab = _sidenavTab;
 
         //console.log(sidenavTab);
         $scope.menu = ssSideNav;
@@ -88,7 +88,7 @@ class Controller {
         if ($event) {
             $event.stopPropagation();
         }
-        sidenavTab.closeTab(tab);
+        // sidenavTab.closeTab(tab);
     }
 }
 
@@ -97,7 +97,7 @@ Controller.$inject = [
     '$scope',
     'ssSideNav',
     'loginService',
-    'sidenavTab',
+    // 'sidenavTab',
     '$state',
     '$http',
     'authService',

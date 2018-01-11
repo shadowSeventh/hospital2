@@ -129,34 +129,7 @@ public class RestTemplateConf {
      * @param prop
      * @return
      */
-    @Bean
-    HttpClient wwwHttpClient(HospitalProperties prop) throws KeyManagementException, NoSuchAlgorithmException {
-        PlainConnectionSocketFactoryEx httpConnFac = new PlainConnectionSocketFactoryEx();
-        SSLContext sslcontext = SSLContexts.custom().build();
-        SSLConnectionSocketFactoryEx sslConnFac = new SSLConnectionSocketFactoryEx(sslcontext);
-        if (prop.getHttp().getProxy().isEnabled()) {
-            SocketAddress address = new InetSocketAddress(
-                    prop.getHttp().getProxy().getHost(),
-                    prop.getHttp().getProxy().getPort());
-            Proxy proxy = new Proxy(Proxy.Type.SOCKS, address);
-            httpConnFac.setProxy(proxy);
-            sslConnFac.setProxy(proxy);
-        }
 
-        Registry<ConnectionSocketFactory> reg = RegistryBuilder.<ConnectionSocketFactory>create()
-                .register("http", httpConnFac)
-                .register("https", sslConnFac)
-                .build();
-        PoolingHttpClientConnectionManager connMgr = new PoolingHttpClientConnectionManager(reg);
-
-
-        HttpClientBuilder hcb = HttpClientBuilder.create()
-                .setConnectionManager(connMgr);
-        hcb.build();
-        HttpClient httpClient = hcb.build();
-
-        return httpClient;
-    }
 
     /**
      * 访问外网的 RestTemplate

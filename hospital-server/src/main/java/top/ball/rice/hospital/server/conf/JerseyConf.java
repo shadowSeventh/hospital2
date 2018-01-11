@@ -7,8 +7,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import top.ball.rice.hospital.server.resource.bargainApp.authorities.AuthoritiesResource;
-import top.ball.rice.hospital.server.resource.home.HomeResource;
 
 import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.core.MediaType;
@@ -46,8 +44,7 @@ public class JerseyConf {
 
         // 统一要求：全部注册实现类，而非接口类
 
-        resourceConfig.register(AuthoritiesResource.class);
-        resourceConfig.register(HomeResource.class);
+//        resourceConfig.register(HomeResource.class);
         resourceConfig.property(ServerProperties.RESPONSE_SET_STATUS_OVER_SEND_ERROR, true);
         resourceConfig.property(ServerProperties.PROCESSING_RESPONSE_ERRORS_ENABLED, true);
         return resourceConfig;

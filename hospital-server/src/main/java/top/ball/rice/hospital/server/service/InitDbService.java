@@ -19,7 +19,7 @@ public class InitDbService {
 //    @Autowired
 //    private BargainAppRepo bargainAppRepo;
 
-    @EventListener
+//    @EventListener
     void onApplicationStated(ContextRefreshedEvent event) {
         initAdminUser();
     }
@@ -34,7 +34,7 @@ public class InitDbService {
             user.setDisabled(true);
             Set<String> stringSet = new LinkedHashSet<>();
             stringSet.add("SA");
-            user.setAuthorities(stringSet);
+//            user.setAuthorities(stringSet);
             staffRepo.save(user);
         }
 

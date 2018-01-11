@@ -7,7 +7,6 @@ import errorService from "./errorService";
 import authService from "./authService";
 import imgService from "./imgService";
 import orderNumService from "./orderNumService";
-import sidenavTab from "./sidenavTab";
 import loginService from "./loginService"
 
 export default angular.module(`${conf.app}.services`, [
@@ -18,7 +17,6 @@ export default angular.module(`${conf.app}.services`, [
     authService.name,
     imgService.name,
     orderNumService.name,
-    sidenavTab.name,
     loginService.name
 
 ]);
