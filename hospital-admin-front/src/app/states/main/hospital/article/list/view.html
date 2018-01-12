@@ -75,16 +75,16 @@
                     </div>
                     <div  class="operateFont" layout="column">
                         <button  ng-if="article.statusCode=='NORMAL'"
-                                 ng-click="saleDialog(article.id,'停用');">
-                            下架
+                                 ng-click="saleDialog(article.id,'CLOSED');">
+                            停用
                         </button>
                         <button  ng-if="article.statusCode!='NORMAL'"
-                                 ng-click="saleDialog(article.id,'发布');">
-                            上架
+                                 ng-click="saleDialog(article.id,'NORMAL');">
+                            发布
                         </button>
                     </div>
                     <div  class="operateFont" layout="column">
-                        <button   ng-if="article.statusCode !=='NORMAL'" ng-click="delete(article.id,article)">
+                        <button   ng-if="article.statusCode !=='NORMAL'" ng-click="delete(article.id)">
                             删除
                         </button>
                     </div>

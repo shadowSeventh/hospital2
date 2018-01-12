@@ -100,7 +100,7 @@ public class ArticleResource {
     }
 
     @Path("/{id}")
-    @POST
+    @PUT
     @Produces(MediaType.APPLICATION_JSON)
     public UniResp<String> changeStatus(
             @PathParam(value = "id")

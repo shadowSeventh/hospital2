@@ -9,6 +9,7 @@ var $scope,
     loginService,
     $mdDialog,
     Upload,
+    alertService,
     $stateParams;
 
 class Controller {
@@ -20,6 +21,7 @@ class Controller {
                 _loginService,
                 _$mdDialog,
                 _Upload,
+                _alertService,
                 _$stateParams) {
         $scope = _$scope;
         $http = _$http;
@@ -29,6 +31,7 @@ class Controller {
         loginService = _loginService;
         $log = _$log;
         Upload = _Upload;
+        alertService=_alertService,
         $stateParams = _$stateParams;
         /////////////////////////////////
         // loginService.loginCtl(true);
@@ -67,6 +70,44 @@ class Controller {
             $scope.keyWord = '';
         };
         $scope.getPageInfo(0);
+
+
+        $scope.saleDialog = function (id, status) {
+            let showStatus;
+            if (status=="NORMAL"){
+                showStatus="发布"
+            }else{
+                showStatus="停用"
+            }
+            alertService.confirm(null, "确定" + showStatus + "该图文？", "温馨提示", "取消", "确认")
+                .then(function (data) {
+                    if (data) {
+                        $http({
+                            method: 'PUT',
+                            url:conf.apiPath + "/admin/article/"+id,
+                            params: {
+                                status: status
+                            },
+                        }).success(function (data) {
+                            if (data.status == 200) {
+                                $scope.getPageInfo(0);
+                            }
+                        });
+                    }
+                });
+        };
+
+        $scope.delete = function (id) {
+            $http({
+                method: 'DELETE',
+                url:conf.apiPath + "/admin/article/"+id,
+            }).then(function (resp) {
+                if (resp.status == 200) {
+                    $scope.getPageInfo(0);
+                }
+            }, function (resp) {
+            });
+        };
     }
 
 
@@ -81,6 +122,7 @@ Controller.$inject = [
     'loginService',
     '$mdDialog',
     'Upload',
+    'alertService',
     '$stateParams'
 ];
 
