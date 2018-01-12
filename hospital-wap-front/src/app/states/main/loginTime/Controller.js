@@ -112,7 +112,7 @@ class Controller {
             //         // alertService.alert('您不是代理商无权访问', null, '确定');
             //         $mdDialog.show({
             //             template: html,
-            //             parent: angular.element(document.body).find('#qh-shop-wap-front'),
+            //             parent: angular.element(document.body).find('#hospital-wap-front'),
             //             clickOutsideToClose: true,
             //             controllerAs: "vmd",
             //             fullscreen: false,

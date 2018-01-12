@@ -14,19 +14,12 @@ var baseObj = {
  */
 function dev() {
 
-
-    const devPort = "16300";              //开发端口
-    const apiPort = "11400";              //api端口，支付默认api端口
-
-    /////////////////////////////////这是分割线
-    let domain = "//kingsilk.net";
-    let rootUrl = `/shop/local/${devPort}/`;
-    let apiPath = domain + `/shop/rs/local/${apiPort}/api`;
+    let domain = "//127.0.0.1:60129";
+    let apiPath = domain + `/hospital/rs/api`;
 
 
 
     return Object.assign(baseObj, {
-        rootUrl: rootUrl,                   // FIXME 有用到？
         apiPath: apiPath,
         maxSize: 8,                         // 页数多少多少翻页数
         pageSize: 10,                       // 每页多少条数据

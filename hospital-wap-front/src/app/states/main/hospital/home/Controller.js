@@ -43,9 +43,24 @@ class Controller {
         alertService = _alertService;
         wxService = _wxService;
         /////////////////////////////////
+        $scope.getPageInfo=function (page) {
+            $http({
+                method: 'GET',
+                url: conf.apiPath + '/wap/article/list',
+                params: {
+                    size: conf.pageSize,
+                    page: page,
+                },
+            }).then(function (resp) {
+                console.log(resp.data.data.content);
+                $scope.articles=resp.data.data.content;
+                // console.log('Success ' + resp.data.data.cdnUrls[0].url);
+            }, function (resp) {
+                // console.log('Error status: ' + resp.status);
+            });
+        };
 
-
-
+        $scope.getPageInfo();
     }
 }
 

@@ -11,7 +11,7 @@ function alertServiceFactory($q, $interval, $mdDialog) {
 
         $mdDialog.show({
             template: html1,
-            parent: angular.element(document.body).find('#qh-shop-wap-front'),
+            parent: angular.element(document.body).find('#hospital-wap-front'),
             targetEvent: ev,
             clickOutsideToClose: true,
             hasBackdrop:false,
@@ -47,7 +47,7 @@ function alertServiceFactory($q, $interval, $mdDialog) {
         var intervalStop = undefined;
         $mdDialog.show({
             template: html,
-            parent: angular.element(document.body).find('#qh-shop-wap-front'),
+            parent: angular.element(document.body).find('#hospital-wap-front'),
             controllerAs: "vm",
             clickOutsideToClose: false,
             hasBackdrop:false,
@@ -98,7 +98,7 @@ function alertServiceFactory($q, $interval, $mdDialog) {
         }
         $mdDialog.show(
             $mdDialog.alert()
-                .parent(angular.element(document.body).find('#qh-shop-wap-front'))
+                .parent(angular.element(document.body).find('#hospital-wap-front'))
                 .clickOutsideToClose(true)
                 .title(title)
                 .textContent(msg)
@@ -112,7 +112,7 @@ function alertServiceFactory($q, $interval, $mdDialog) {
         var deferred = $q.defer();
         $mdDialog.show({
             template: html2,
-            parent: angular.element(document.body).find('#qh-shop-wap-front'),
+            parent: angular.element(document.body).find('#hospital-wap-front'),
             controllerAs: "vm",
             clickOutsideToClose: true,
             hasBackdrop:false,

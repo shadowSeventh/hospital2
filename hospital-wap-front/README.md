@@ -17,7 +17,7 @@ npm run webpack -- --env.env=dev        // --watch
 # 上传
 
 ```bash
-PROJECT_NAME=qh-shop-admin-front
+PROJECT_NAME=hospital-admin-front
 
 uploadEnv(){
     ENV=$1
