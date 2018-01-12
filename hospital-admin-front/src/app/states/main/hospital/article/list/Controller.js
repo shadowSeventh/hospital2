@@ -31,15 +31,15 @@ class Controller {
         loginService = _loginService;
         $log = _$log;
         Upload = _Upload;
-        alertService=_alertService,
-        $stateParams = _$stateParams;
+        alertService = _alertService,
+            $stateParams = _$stateParams;
         /////////////////////////////////
         // loginService.loginCtl(true);
 
         $scope.data = [];
 
 
-        $scope.getPageInfo=function (page) {
+        $scope.getPageInfo = function (page) {
             $http({
                 method: 'GET',
                 url: conf.apiPath + '/admin/article',
@@ -47,11 +47,11 @@ class Controller {
                     size: conf.pageSize,
                     page: page,
                     // sort:'',
-                    keyword: $scope.title,
+                    title: $scope.keyWords == '' ? null : $scope.keyWords,
                 },
             }).then(function (resp) {
                 console.log(resp.data.data.content);
-                $scope.data=resp.data.data.content;
+                $scope.data = resp.data.data.content;
                 // console.log('Success ' + resp.data.data.cdnUrls[0].url);
             }, function (resp) {
                 // console.log('Error status: ' + resp.status);
@@ -74,17 +74,17 @@ class Controller {
 
         $scope.saleDialog = function (id, status) {
             let showStatus;
-            if (status=="NORMAL"){
-                showStatus="发布"
-            }else{
-                showStatus="停用"
+            if (status == "NORMAL") {
+                showStatus = "发布"
+            } else {
+                showStatus = "停用"
             }
             alertService.confirm(null, "确定" + showStatus + "该图文？", "温馨提示", "取消", "确认")
                 .then(function (data) {
                     if (data) {
                         $http({
                             method: 'PUT',
-                            url:conf.apiPath + "/admin/article/"+id,
+                            url: conf.apiPath + "/admin/article/" + id,
                             params: {
                                 status: status
                             },
@@ -100,7 +100,7 @@ class Controller {
         $scope.delete = function (id) {
             $http({
                 method: 'DELETE',
-                url:conf.apiPath + "/admin/article/"+id,
+                url: conf.apiPath + "/admin/article/" + id,
             }).then(function (resp) {
                 if (resp.status == 200) {
                     $scope.getPageInfo(0);

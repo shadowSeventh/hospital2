@@ -18,7 +18,7 @@ function dev() {
     const apiPort = "14300";            //api端口
 
     /////////////////////////////////////////////分割线
-    let domain = "//127.0.0.1:60129";
+    let domain = "//192.168.2.2:60129";
     // let rootUrl = `/local/${devPort}/admin`;
     // let rootPath = domain + rootUrl;
     let apiPath = domain + `/hospital/rs/api`;
