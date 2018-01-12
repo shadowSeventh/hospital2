@@ -60,32 +60,32 @@
 
         <!-- 内容区域 -->
         <div flex layout="column">
-            <div class="tab-parent" layout="row" layout-align="start center">
-                <!--<md-tabs -->
-                         <!--md-no-ink-bar="true"-->
-                         <!--md-autoselect="true"-->
-                         <!--style="width: 100%;min-width: 1300px;background: #e6e6e6;">-->
-                    <!--&lt;!&ndash;<md-tab ng-repeat="tab in vm.sidenavTab.tabs"&ndash;&gt;-->
-                            <!--&lt;!&ndash;ui-sref-active="active"&ndash;&gt;-->
-                            <!--&lt;!&ndash;ng-click="viewTab(tab)">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<md-tab-label>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<span>{{tab.title}}</span>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<md-icon class="right-icon"&ndash;&gt;-->
-                                     <!--&lt;!&ndash;md-font-set="ks-admin-font"&ndash;&gt;-->
-                                     <!--&lt;!&ndash;md-font-icon="ks-close"&ndash;&gt;-->
-                                     <!--&lt;!&ndash;ng-if="!tab.disableClose"&ndash;&gt;-->
-                                     <!--&lt;!&ndash;ng-click="vm.close(tab, $event)"></md-icon>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</md-tab-label>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</md-tab>&ndash;&gt;-->
-                <!--</md-tabs>-->
-            </div>
-            <!--<md-content layout="column" flex style="min-width: 1300px;overflow-x:hidden;background-color: #f5f5f5;height: 100%;">-->
-                <!--<div ng-repeat="tab in vm.sidenavTab.tabs"-->
-                     <!--ui-view="{{tab.uiView}}"-->
-                     <!--ng-show="$state.includes(tab.matchStates)">-->
-                    <!--&lt;!&ndash; 右侧内容区域 &ndash;&gt;-->
-                <!--</div>-->
-            <!--</md-content>-->
+          <!--  <div class="tab-parent" layout="row" layout-align="start center">
+                <md-tabs
+                         md-no-ink-bar="true"
+                         md-autoselect="true"
+                         style="width: 100%;min-width: 1300px;background: #e6e6e6;">
+                    <md-tab ng-repeat="tab in vm.sidenavTab.tabs"
+                            ui-sref-active="active"
+                            ng-click="viewTab(tab)">
+                        <md-tab-label>
+                            <span>{{tab.title}}</span>
+                            <md-icon class="right-icon"
+                                     md-font-set="ks-admin-font"
+                                     md-font-icon="ks-close"
+                                     ng-if="!tab.disableClose"
+                                     ng-click="vm.close(tab, $event)"></md-icon>
+                        </md-tab-label>
+                    </md-tab>
+                </md-tabs>
+            </div>-->
+            <md-content layout="column" flex style="min-width: 1300px;overflow-x:hidden;background-color: #f5f5f5;height: 100%;">
+                <div ng-repeat="tab in vm.sidenavTab.tabs"
+                     ui-view="{{tab.uiView}}"
+                     ng-show="$state.includes(tab.matchStates)">
+                    <!-- 右侧内容区域 -->
+                </div>
+            </md-content>
         </div>
 
     </div>

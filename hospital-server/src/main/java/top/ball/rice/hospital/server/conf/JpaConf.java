@@ -1,19 +1,17 @@
 package top.ball.rice.hospital.server.conf;
 
-import com.mysql.cj.jdbc.MysqlDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import top.ball.rice.hospital.repo.BaseRepo;
+import top.ball.rice.hospital.repo.BaseRepoImpl;
 
 import javax.sql.DataSource;
 import java.util.Random;
@@ -24,7 +22,7 @@ import java.util.Random;
 @Configuration
 //
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackageClasses = BaseRepo.class)
+@EnableJpaRepositories(repositoryBaseClass = BaseRepoImpl.class, basePackageClasses = BaseRepo.class)
 @EnableJpaAuditing
 class JpaConf {
 

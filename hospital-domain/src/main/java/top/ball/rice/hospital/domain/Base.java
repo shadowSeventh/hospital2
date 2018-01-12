@@ -1,8 +1,9 @@
 package top.ball.rice.hospital.domain;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
@@ -17,7 +18,9 @@ import java.util.Objects;
 public class Base implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
     protected String id;
 
     /**
@@ -43,7 +46,7 @@ public class Base implements Serializable {
     /**
      * 是否已经逻辑删除
      */
-    protected Boolean deleted;
+    protected Boolean deleted = false;
 
     // --------------------------------------- equals && hashCode
 

@@ -45,7 +45,7 @@ function alertServiceFactory($q, $interval, $mdDialog) {
         var intervalStop = undefined;
         $mdDialog.show({
             template: html,
-            parent: angular.element(document.body).find('#qh-platform-wap-front'),
+            parent: angular.element(document.body).find('#hospital-wap-front'),
             controllerAs: "vm",
             clickOutsideToClose: true,
             fullscreen: false,

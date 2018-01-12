@@ -1,17 +1,12 @@
 package top.ball.rice.hospital.domain;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 
 /**
  * 行政区划代码
  */
 @Entity
-public class Adc extends Base{
-
+public class Adc extends Base {
 
 
     private String no;

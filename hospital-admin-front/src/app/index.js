@@ -11,7 +11,6 @@ import "angular-material/angular-material.css";
 import config from "./config";
 import filters from "./filters";
 import services from "./services";
-import d3 from "d3";
 
 import "./global"
 import "ui-router-extras";

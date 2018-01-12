@@ -1,0 +1,50 @@
+<div >
+    <div class="title">标题:</div>
+    <div layout="row" layout-align="start center">
+        <input class="form-control" type="text" placeholder="请输入标题" style="width: 250px" ng-model="data.title">
+    </div>
+    <div class="right" style="background: red" ng-if="data.headImg">
+        <div class="imgList" id="img{{$index}}">
+            <p class="imgWrap">
+                <img ng-src="{{data.headImg}}" width="120px"
+                     height="120px"/>
+            </p>
+            <div class="file-panel" layout="column" layout-align="start center">
+                <span class="cancel" ng-click="cancelDelImg()">删除</span>
+            </div>
+        </div>
+    </div>
+    <div class="imgList" layout="column" layout-align="center center"
+         ngf-select="uploading($file)" ngf-pattern="'image/*'">
+        <md-icon md-font-set="ks-admin-font" md-font-icon="ks-add-o"></md-icon>
+        <div>上传主页首图</div>
+        <!--<div class="button" ngf-select="uploading($file)" ngf-pattern="'image/*'" ng-model="files" ngf-multiple="true">上传图片</div>-->
+    </div>
+
+    <div class="item-editor" layout="row" layout-align="start start">
+        <div flex="10" class="informations-title" layout="row" layout-align="end center">图文详情:</div>
+        <div flex="80" class="informations-content " layout="row" layout-align="start center">
+            <div id="div4" flex>
+            </div>
+        </div>
+    </div>
+    <!--<ul class="tableStatus" layout="row">-->
+        <!--&lt;!&ndash;<li ng-repeat="btn in btnData track by $index"&ndash;&gt;-->
+        <!--&lt;!&ndash;ng-class="{select:btn.check}"&ndash;&gt;-->
+        <!--&lt;!&ndash;ng-click="btnClick(btn)"&ndash;&gt;-->
+        <!--&lt;!&ndash;&gt;{{btn.name}}({{btn.num}})</li>&ndash;&gt;-->
+        <!--<li ng-class="{select:activeNum == 'all'}" ng-click="btnClick('all')" >发布({{statusNum.allCount}})</li>-->
+        <!--<li ng-class="{select:activeNum == 'UNPAYED'}" ng-click="btnClick('UNPAYED')">编辑中({{statusNum.UNPAYEDCount}})</li>-->
+        <!--<li ng-class="{select:activeNum == 'UNCONFIRMED'}" ng-click="btnClick('UNCONFIRMED')">禁用({{statusNum.UNCONFIRMEDCount}})</li>-->
+        <!--<li flex></li>-->
+    <!--</ul>-->
+    <button class="next-btn" layout="row" layout-align="center center"
+            ng-click="pageCancle()">取消
+    </button>
+
+    <button class="next-btn" layout="row" layout-align="center center"
+            ng-click="pageSave('SALE_OFF')">保存
+    </button>
+
+
+</div>

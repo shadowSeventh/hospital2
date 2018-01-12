@@ -12,7 +12,6 @@ import java.io.Serializable;
 /**
  *
  */
-@Transactional
 public class BaseRepoImpl<T, ID extends Serializable>
         extends QueryDslJpaRepository<T, ID>
         implements JpaRepository<T, ID>,

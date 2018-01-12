@@ -79,53 +79,53 @@ function authServiceFactory($http, loginService,$injector) {
 
 
     function setAuthorities(brandAppId) {
-        $http({
-            method: "GET",
-            url: conf.apiPath + "/authorities",
-
-            headers: {
-                'Authorization': 'Bearer ' + loginService.getAccessToken(),
-                'brandApp-Id': brandAppId
-            },
-            data: {}
-        }).then(function successCallback(data) {
-            if(data.data.data){
-
-
-                store.set(conf.authorSet, data.data.data);
-
-
-                var startTime = new Date();
-                console.log('------------------------11111', startTime, startTime.getMilliseconds());
-                update(data.data.data);
-                var endTime = new Date();
-                console.log('------------------------22222', endTime, endTime.getMilliseconds());
-
-            }else {
-                store.set(conf.authorSet,null);
-                update('[]')
-            }
-        }, function errorCallback(response) {
-            store.set(conf.authorSet,null);
-            update('[]');
-            if(response.status == '401'){
-                jso.wipeTokens();
-                loginService.setAccessToken(null);
-                loginService.setbrandAppId(null);
-                $http({
-                    method: "POST",
-                    url: "https:" + conf.oauthPath +"/logout",
-                    headers: {},
-                    params: {},
-                    withCredentials:true,
-                }).success(function (resp) {
-                    // console.log('data', resp);
-                    location.reload();
-                },function(resp){
-                    console.log('ERR', resp);
-                });
-            }
-        });
+        // $http({
+        //     method: "GET",
+        //     url: conf.apiPath + "/authorities",
+        //
+        //     headers: {
+        //         'Authorization': 'Bearer ' + loginService.getAccessToken(),
+        //         'brandApp-Id': brandAppId
+        //     },
+        //     data: {}
+        // }).then(function successCallback(data) {
+        //     if(data.data.data){
+        //
+        //
+        //         store.set(conf.authorSet, data.data.data);
+        //
+        //
+        //         var startTime = new Date();
+        //         console.log('------------------------11111', startTime, startTime.getMilliseconds());
+        //         update(data.data.data);
+        //         var endTime = new Date();
+        //         console.log('------------------------22222', endTime, endTime.getMilliseconds());
+        //
+        //     }else {
+        //         store.set(conf.authorSet,null);
+        //         update('[]')
+        //     }
+        // }, function errorCallback(response) {
+        //     store.set(conf.authorSet,null);
+        //     update('[]');
+        //     if(response.status == '401'){
+        //         jso.wipeTokens();
+        //         loginService.setAccessToken(null);
+        //         loginService.setbrandAppId(null);
+        //         $http({
+        //             method: "POST",
+        //             url: "https:" + conf.oauthPath +"/logout",
+        //             headers: {},
+        //             params: {},
+        //             withCredentials:true,
+        //         }).success(function (resp) {
+        //             // console.log('data', resp);
+        //             location.reload();
+        //         },function(resp){
+        //             console.log('ERR', resp);
+        //         });
+        //     }
+        // });
     }
 
     let getAuthorities = () => {

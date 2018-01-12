@@ -10,7 +10,7 @@
         "spec": "latest",
         "type": "tag"
       },
-      "/home/susf/work/git-repo/qh-platform/qh-platform-admin-front"
+      "/home/susf/work/git-repo/hospital/hospital-admin-front"
     ]
   ],
   "_from": "plupload@latest",
@@ -45,7 +45,7 @@
   "_shasum": "925bc782c04171829491d887c3cb343f97ee39ce",
   "_shrinkwrap": null,
   "_spec": "plupload",
-  "_where": "/home/susf/work/git-repo/qh-platform/qh-platform-admin-front",
+  "_where": "/home/susf/work/git-repo/hospital/hospital-admin-front",
   "author": {
     "name": "Ephox"
   },
