@@ -21,11 +21,12 @@
         <!-- 顶部栏 -->
         <md-toolbar class="ks-header" layout="row">
             <div class="md-toolbar-tools" flex>
-                <h2 flex>
+                <h2 style="margin-right: 30px">
                      <span ng-click="openLeft()" style="outline: none" >
                         <md-icon md-font-set="ks-admin-font" md-font-icon="ks-menu"></md-icon>
                     </span>
                 </h2>
+                <div flex>{{titleName}}</div>
                 <!-- <select ng-model="org" ng-options="tmp.name for tmp in orgList.orgList" ng-change="orgChange()"
                          style="color: #000000">
                  </select>-->

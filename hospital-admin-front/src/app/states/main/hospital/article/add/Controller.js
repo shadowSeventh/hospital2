@@ -6,7 +6,7 @@ var $scope,
     authService,
     $state,
     $log,
-    loginService,
+    $rootScope,
     $mdDialog,
     Upload,
     $stateParams;
@@ -17,7 +17,7 @@ class Controller {
                 _$state,
                 _$log,
                 _authService,
-                _loginService,
+                _$rootScope,
                 _$mdDialog,
                 _Upload,
                 _$stateParams) {
@@ -26,12 +26,14 @@ class Controller {
         $mdDialog = _$mdDialog;
         $state = _$state;
         authService = _authService;
-        loginService = _loginService;
+        $rootScope = _$rootScope;
         $log = _$log;
         Upload = _Upload;
         $stateParams = _$stateParams;
         /////////////////////////////////
-        // loginService.loginCtl(true);
+        // $rootScope.loginCtl(true);
+
+        $rootScope.titleName = '活动图文编辑';
         $scope.id = $stateParams.id;
 
         console.log($scope.id );
@@ -164,7 +166,7 @@ Controller.$inject = [
     '$state',
     '$log',
     'authService',
-    'loginService',
+    '$rootScope',
     '$mdDialog',
     'Upload',
     '$stateParams'
