@@ -10,7 +10,6 @@ import java.util.List;
  * 员工表
  */
 @Entity
-@Table
 public class Staff extends Base {
     /**
      * 是否已经禁用。

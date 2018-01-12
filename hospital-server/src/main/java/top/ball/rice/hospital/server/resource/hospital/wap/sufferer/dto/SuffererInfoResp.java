@@ -1,9 +1,6 @@
-package top.ball.rice.hospital.domain;
+package top.ball.rice.hospital.server.resource.hospital.wap.sufferer.dto;
 
-import javax.persistence.MappedSuperclass;
-
-@MappedSuperclass
-public class User extends Base {
+public class SuffererInfoResp {
 
     /**
      * 用户名
