@@ -1,11 +1,9 @@
-package top.ball.rice.hospital.domain;
+package top.ball.rice.hospital.server.common;
 
-import javax.persistence.Entity;
-
-@Entity
-public class User extends Base {
+public class UserInfo {
 
 
+    private String id;
     /**
      * 用户名
      */
@@ -55,6 +53,24 @@ public class User extends Base {
      * 联系电话
      */
     private String telephone;
+
+    /**
+     * 身高
+     */
+    private Integer height;
+
+    /**
+     * 体重
+     */
+    private Integer weight;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getUserName() {
         return userName;
@@ -134,5 +150,21 @@ public class User extends Base {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
     }
 }

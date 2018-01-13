@@ -9,6 +9,8 @@ import javax.persistence.Table;
 @Entity
 public class Doctor extends Base {
 
+
+    private String userId;
     /**
      * 科室
      */
@@ -23,6 +25,14 @@ public class Doctor extends Base {
      * 状态
      */
     private StaffStatusEnum status;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getDepartment() {
         return department;

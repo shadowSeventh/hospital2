@@ -30,6 +30,8 @@ public class QDoctor extends EntityPathBase<Doctor> {
     //inherited
     public final BooleanPath deleted = _super.deleted;
 
+    public final StringPath department = createString("department");
+
     public final StringPath desp = createString("desp");
 
     //inherited
@@ -40,6 +42,8 @@ public class QDoctor extends EntityPathBase<Doctor> {
 
     //inherited
     public final DateTimePath<java.util.Date> lastModifiedDate = _super.lastModifiedDate;
+
+    public final EnumPath<top.ball.rice.hospital.core.StaffStatusEnum> status = createEnum("status", top.ball.rice.hospital.core.StaffStatusEnum.class);
 
     public final StringPath userId = createString("userId");
 

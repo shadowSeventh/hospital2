@@ -12,7 +12,7 @@ import com.querydsl.core.types.Path;
 /**
  * QUser is a Querydsl query type for User
  */
-@Generated("com.querydsl.codegen.SupertypeSerializer")
+@Generated("com.querydsl.codegen.EntitySerializer")
 public class QUser extends EntityPathBase<User> {
 
     private static final long serialVersionUID = -1800607840L;
@@ -20,6 +20,10 @@ public class QUser extends EntityPathBase<User> {
     public static final QUser user = new QUser("user");
 
     public final QBase _super = new QBase(this);
+
+    public final NumberPath<Integer> age = createNumber("age", Integer.class);
+
+    public final StringPath contacts = createString("contacts");
 
     //inherited
     public final StringPath createdBy = _super.createdBy;
@@ -35,19 +39,25 @@ public class QUser extends EntityPathBase<User> {
     //inherited
     public final StringPath id = _super.id;
 
+    public final StringPath IDNum = createString("IDNum");
+
     //inherited
     public final StringPath lastModifiedBy = _super.lastModifiedBy;
 
     //inherited
     public final DateTimePath<java.util.Date> lastModifiedDate = _super.lastModifiedDate;
 
-    public final StringPath name = createString("name");
+    public final StringPath nickName = createString("nickName");
 
     public final StringPath passWord = createString("passWord");
 
     public final StringPath phone = createString("phone");
 
     public final BooleanPath sex = createBoolean("sex");
+
+    public final StringPath telephone = createString("telephone");
+
+    public final StringPath userName = createString("userName");
 
     public QUser(String variable) {
         super(User.class, forVariable(variable));

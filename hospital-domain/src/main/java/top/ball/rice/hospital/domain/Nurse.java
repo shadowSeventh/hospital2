@@ -5,8 +5,9 @@ import top.ball.rice.hospital.core.StaffStatusEnum;
 import javax.persistence.Entity;
 
 @Entity
-public class Nurse extends User {
+public class Nurse extends Base {
 
+    private String userId;
     /**
      * 科室
      */
@@ -21,6 +22,14 @@ public class Nurse extends User {
      * 状态
      */
     private StaffStatusEnum status;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getDepartment() {
         return department;

@@ -19,7 +19,7 @@ public class QNurse extends EntityPathBase<Nurse> {
 
     public static final QNurse nurse = new QNurse("nurse");
 
-    public final QUser _super = new QUser(this);
+    public final QBase _super = new QBase(this);
 
     //inherited
     public final StringPath createdBy = _super.createdBy;
@@ -30,8 +30,9 @@ public class QNurse extends EntityPathBase<Nurse> {
     //inherited
     public final BooleanPath deleted = _super.deleted;
 
-    //inherited
-    public final StringPath headImg = _super.headImg;
+    public final StringPath department = createString("department");
+
+    public final StringPath desp = createString("desp");
 
     //inherited
     public final StringPath id = _super.id;
@@ -42,17 +43,9 @@ public class QNurse extends EntityPathBase<Nurse> {
     //inherited
     public final DateTimePath<java.util.Date> lastModifiedDate = _super.lastModifiedDate;
 
-    //inherited
-    public final StringPath name = _super.name;
+    public final EnumPath<top.ball.rice.hospital.core.StaffStatusEnum> status = createEnum("status", top.ball.rice.hospital.core.StaffStatusEnum.class);
 
-    //inherited
-    public final StringPath passWord = _super.passWord;
-
-    //inherited
-    public final StringPath phone = _super.phone;
-
-    //inherited
-    public final BooleanPath sex = _super.sex;
+    public final StringPath userId = createString("userId");
 
     public QNurse(String variable) {
         super(Nurse.class, forVariable(variable));

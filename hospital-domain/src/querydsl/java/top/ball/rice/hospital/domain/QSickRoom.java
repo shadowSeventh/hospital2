@@ -10,14 +10,14 @@ import com.querydsl.core.types.Path;
 
 
 /**
- * QSufferer is a Querydsl query type for Sufferer
+ * QSickRoom is a Querydsl query type for SickRoom
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
-public class QSufferer extends EntityPathBase<Sufferer> {
+public class QSickRoom extends EntityPathBase<SickRoom> {
 
-    private static final long serialVersionUID = -1175087855L;
+    private static final long serialVersionUID = 977931406L;
 
-    public static final QSufferer sufferer = new QSufferer("sufferer");
+    public static final QSickRoom sickRoom = new QSickRoom("sickRoom");
 
     public final QBase _super = new QBase(this);
 
@@ -30,8 +30,6 @@ public class QSufferer extends EntityPathBase<Sufferer> {
     //inherited
     public final BooleanPath deleted = _super.deleted;
 
-    public final NumberPath<Integer> height = createNumber("height", Integer.class);
-
     //inherited
     public final StringPath id = _super.id;
 
@@ -41,20 +39,24 @@ public class QSufferer extends EntityPathBase<Sufferer> {
     //inherited
     public final DateTimePath<java.util.Date> lastModifiedDate = _super.lastModifiedDate;
 
-    public final StringPath userId = createString("userId");
+    public final StringPath Seq = createString("Seq");
 
-    public final NumberPath<Integer> weight = createNumber("weight", Integer.class);
+    public final StringPath seq = createString("seq");
 
-    public QSufferer(String variable) {
-        super(Sufferer.class, forVariable(variable));
+    public final EnumPath<top.ball.rice.hospital.core.SickRoomStatusEnum> status = createEnum("status", top.ball.rice.hospital.core.SickRoomStatusEnum.class);
+
+    public final EnumPath<top.ball.rice.hospital.core.SickRoomTypeEnum> type = createEnum("type", top.ball.rice.hospital.core.SickRoomTypeEnum.class);
+
+    public QSickRoom(String variable) {
+        super(SickRoom.class, forVariable(variable));
     }
 
-    public QSufferer(Path<? extends Sufferer> path) {
+    public QSickRoom(Path<? extends SickRoom> path) {
         super(path.getType(), path.getMetadata());
     }
 
-    public QSufferer(PathMetadata metadata) {
-        super(Sufferer.class, metadata);
+    public QSickRoom(PathMetadata metadata) {
+        super(SickRoom.class, metadata);
     }
 
 }

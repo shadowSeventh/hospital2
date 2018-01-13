@@ -4,8 +4,6 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationTrustResolver;
-import org.springframework.security.authentication.AuthenticationTrustResolverImpl;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,21 +11,28 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import top.ball.rice.hospital.service.service.StaffUserDetailsService;
 
 import java.util.Arrays;
 
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true, proxyTargetClass = true)
 public class WebSecurityConf {
 
-    @Bean
-    AuthenticationTrustResolver authenticationTrustResolver() {
-        return new AuthenticationTrustResolverImpl();
-    }
+//    @Bean
+//    AuthenticationTrustResolver authenticationTrustResolver() {
+//        return new AuthenticationTrustResolverImpl();
+//    }
 
+    @Bean
+    StaffUserDetailsService staffUserDetailsService (){
+        return new StaffUserDetailsService();
+    }
 
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -49,13 +54,15 @@ public class WebSecurityConf {
     @Bean
     @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
     WebSecurityConfigurerAdapter webSecurityConfigurerAdapter(
-            CorsConfigurationSource corsConfigurationSource
+            CorsConfigurationSource corsConfigurationSource,
+            PasswordEncoder passwordEncoder,
+            StaffUserDetailsService staffUserDetailsService
     ) {
         return new WebSecurityConfigurerAdapter() {
 
             @Override
-            public void configure(AuthenticationManagerBuilder auth) {
-
+            public void configure(AuthenticationManagerBuilder auth) throws Exception {
+                auth.userDetailsService(staffUserDetailsService).passwordEncoder(passwordEncoder);
             }
 
             @Override
@@ -82,8 +89,9 @@ public class WebSecurityConf {
                         ).permitAll()
                         // 对于获取token的rest api要允许匿名访问
                         .antMatchers("/auth/**").permitAll()
-                        .requestMatchers(CorsUtils::isPreFlightRequest).permitAll();
-                        // 除上面外的所有请求全部需要鉴权认证
+                        .requestMatchers(CorsUtils::isPreFlightRequest).permitAll().and()
+                        .logout().permitAll();
+                // 除上面外的所有请求全部需要鉴权认证
 //                        .anyRequest().authenticated();
 
 
@@ -104,4 +112,5 @@ public class WebSecurityConf {
             }
         };
     }
+
 }

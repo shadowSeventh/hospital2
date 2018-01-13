@@ -10,14 +10,14 @@ import com.querydsl.core.types.Path;
 
 
 /**
- * QSufferer is a Querydsl query type for Sufferer
+ * QDoctorOrderRecord is a Querydsl query type for DoctorOrderRecord
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
-public class QSufferer extends EntityPathBase<Sufferer> {
+public class QDoctorOrderRecord extends EntityPathBase<DoctorOrderRecord> {
 
-    private static final long serialVersionUID = -1175087855L;
+    private static final long serialVersionUID = 1993134315L;
 
-    public static final QSufferer sufferer = new QSufferer("sufferer");
+    public static final QDoctorOrderRecord doctorOrderRecord = new QDoctorOrderRecord("doctorOrderRecord");
 
     public final QBase _super = new QBase(this);
 
@@ -30,7 +30,7 @@ public class QSufferer extends EntityPathBase<Sufferer> {
     //inherited
     public final BooleanPath deleted = _super.deleted;
 
-    public final NumberPath<Integer> height = createNumber("height", Integer.class);
+    public final StringPath doctorId = createString("doctorId");
 
     //inherited
     public final StringPath id = _super.id;
@@ -41,20 +41,20 @@ public class QSufferer extends EntityPathBase<Sufferer> {
     //inherited
     public final DateTimePath<java.util.Date> lastModifiedDate = _super.lastModifiedDate;
 
-    public final StringPath userId = createString("userId");
+    public final EnumPath<top.ball.rice.hospital.core.OrderStatusEnum> status = createEnum("status", top.ball.rice.hospital.core.OrderStatusEnum.class);
 
-    public final NumberPath<Integer> weight = createNumber("weight", Integer.class);
+    public final StringPath suffererId = createString("suffererId");
 
-    public QSufferer(String variable) {
-        super(Sufferer.class, forVariable(variable));
+    public QDoctorOrderRecord(String variable) {
+        super(DoctorOrderRecord.class, forVariable(variable));
     }
 
-    public QSufferer(Path<? extends Sufferer> path) {
+    public QDoctorOrderRecord(Path<? extends DoctorOrderRecord> path) {
         super(path.getType(), path.getMetadata());
     }
 
-    public QSufferer(PathMetadata metadata) {
-        super(Sufferer.class, metadata);
+    public QDoctorOrderRecord(PathMetadata metadata) {
+        super(DoctorOrderRecord.class, metadata);
     }
 
 }
