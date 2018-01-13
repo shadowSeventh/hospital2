@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run webpack -- --env.env=dev --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "node $NODE_DEBUG_OPTION ./node_modules/.bin/webpack"
+    "webpack": "node $NODE_DEBUG_OPTION ./node_modules/.bin/webpack",
     "build": "webpack --config webpack.config.js"
   },
   "author": "",
