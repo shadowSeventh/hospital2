@@ -1,7 +1,7 @@
 import "normalize-css/normalize.css";
 import "animate.css/animate.css";
 import "cropper/dist/cropper.css";
-import "./ks-admin-font/style.css";
+// import "./ks-admin-font/style.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap-theme.css";
 
