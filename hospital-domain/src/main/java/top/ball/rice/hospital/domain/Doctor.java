@@ -4,7 +4,6 @@ package top.ball.rice.hospital.domain;
 import top.ball.rice.hospital.core.StaffStatusEnum;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
 public class Doctor extends Base {

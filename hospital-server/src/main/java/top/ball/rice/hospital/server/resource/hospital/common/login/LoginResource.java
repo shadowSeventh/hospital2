@@ -2,8 +2,6 @@ package top.ball.rice.hospital.server.resource.hospital.common.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import top.ball.rice.hospital.domain.QUser;
-import top.ball.rice.hospital.domain.User;
 import top.ball.rice.hospital.repo.UserRepo;
 import top.ball.rice.hospital.server.common.UniResp;
 

@@ -9,7 +9,7 @@ import java.util.Date;
  * 病房预约记录表
  */
 @Entity
-public class SickRoomOrderRecord extends Base{
+public class SickRoomOrderRecord extends Base {
 
     /**
      * 患者ID

@@ -3,7 +3,6 @@ package top.ball.rice.hospital.server.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import top.ball.rice.hospital.domain.Staff;
 import top.ball.rice.hospital.repo.StaffRepo;
@@ -19,7 +18,7 @@ public class InitDbService {
 //    @Autowired
 //    private BargainAppRepo bargainAppRepo;
 
-//    @EventListener
+    //    @EventListener
     void onApplicationStated(ContextRefreshedEvent event) {
         initAdminUser();
     }

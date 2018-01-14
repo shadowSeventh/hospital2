@@ -2,7 +2,10 @@ package top.ball.rice.hospital.domain;
 
 import top.ball.rice.hospital.core.ArticleStatusEnum;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
 
 @Entity
 public class Article extends Base {
@@ -12,7 +15,7 @@ public class Article extends Base {
     private String headImg;
 
     @Lob
-    @Basic(fetch= FetchType.LAZY)
+    @Basic(fetch = FetchType.LAZY)
     private String content;
 
     private ArticleStatusEnum status;

@@ -3,7 +3,6 @@ package top.ball.rice.hospital.server.conf;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import groovy.transform.CompileStatic;
 import groovy.transform.TypeCheckingMode;
-import top.ball.rice.hospital.service.util.errorHandler.Oauth2ResponseErrorHandler;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
@@ -19,6 +18,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
+import top.ball.rice.hospital.service.util.errorHandler.Oauth2ResponseErrorHandler;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -134,7 +134,6 @@ public class RestTemplateConf {
     }
 
 
-
     @Bean
     @Scope("prototype")
     RestTemplate oauthRestTemplate(
@@ -149,7 +148,6 @@ public class RestTemplateConf {
         restTemplate.setErrorHandler(new Oauth2ResponseErrorHandler());
         return restTemplate;
     }
-
 
 
 }

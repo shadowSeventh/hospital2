@@ -1,7 +1,6 @@
 import net.kingsilk.qh.bargain.core.vote.VoteWorksStatusEnum;
 import net.kingsilk.qh.bargain.domain.VoteWorks;
 import net.kingsilk.qh.bargain.repo.VoteWorksRepo;
-import net.kingsilk.qh.bargain.server.QhBargainServerApp;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

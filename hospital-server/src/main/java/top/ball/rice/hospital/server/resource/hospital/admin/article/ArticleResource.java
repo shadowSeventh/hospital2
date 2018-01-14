@@ -83,7 +83,7 @@ public class ArticleResource {
                 new Sort(new Sort.Order(Sort.Direction.DESC, "dateCreated")));
         Page<Article> page = articleRepo.findAll(
                 allOf(
-                        title != null ? QArticle.article.title.like( "%"+ title+"%") : null,
+                        title != null ? QArticle.article.title.like("%" + title + "%") : null,
                         QArticle.article.deleted.ne(true)
                 ), pageRequest
         );

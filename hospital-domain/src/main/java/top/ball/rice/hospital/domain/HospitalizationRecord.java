@@ -7,12 +7,12 @@ import java.util.Date;
  * 住院记录表
  */
 @Entity
-public class HospitalizationRecord extends Base{
+public class HospitalizationRecord extends Base {
 
     /**
      * 病房ID
      */
-    private  String sickRoomId;
+    private String sickRoomId;
 
     /**
      * 预约记录ID

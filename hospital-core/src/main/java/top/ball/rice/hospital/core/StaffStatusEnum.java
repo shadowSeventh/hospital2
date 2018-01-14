@@ -2,9 +2,9 @@ package top.ball.rice.hospital.core;
 
 public enum StaffStatusEnum {
 
-    WORKING("WORKING","工作中"),
-    VACATION("VACATION","休假中"),
-    QUIT("QUIT","已离职");
+    WORKING("WORKING", "工作中"),
+    VACATION("VACATION", "休假中"),
+    QUIT("QUIT", "已离职");
 
     StaffStatusEnum(String code, String desp) {
         this.code = code;

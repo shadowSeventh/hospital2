@@ -1,10 +1,10 @@
 package top.ball.rice.hospital.core;
 
-public enum  SickRoomStatusEnum {
+public enum SickRoomStatusEnum {
 
-    USING("EDITING","使用中"),
-    NORMAL("NORMAL","空闲"),
-    CLOSED("CLOSED","维修中");
+    USING("EDITING", "使用中"),
+    NORMAL("NORMAL", "空闲"),
+    CLOSED("CLOSED", "维修中");
 
     SickRoomStatusEnum(String code, String desp) {
         this.code = code;

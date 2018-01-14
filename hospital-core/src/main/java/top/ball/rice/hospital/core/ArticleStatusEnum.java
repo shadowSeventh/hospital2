@@ -1,9 +1,9 @@
 package top.ball.rice.hospital.core;
 
-public enum  ArticleStatusEnum {
-    EDITING("EDITING","编辑中"),
-    NORMAL("NORMAL","发布中"),
-    CLOSED("CLOSED","已关闭");
+public enum ArticleStatusEnum {
+    EDITING("EDITING", "编辑中"),
+    NORMAL("NORMAL", "发布中"),
+    CLOSED("CLOSED", "已关闭");
 
     ArticleStatusEnum(String code, String desp) {
         this.code = code;
