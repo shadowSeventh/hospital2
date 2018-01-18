@@ -200,7 +200,7 @@ const config = {
                     "sass-loader"
                 ],
             },
-            { test: /\.scss$/, loader: "style-loader!css-loader!sass-loader" },
+            // { test: /\.scss$/, loader: "style-loader!css-loader!sass-loader" },
             {
                 test: /(node_modules|src\/app\/ag-iconfont).*\.css$/,
                 loader: vendorCssPlugin.extract({

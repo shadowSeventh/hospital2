@@ -179,7 +179,7 @@ const config = {
                     "sass-loader"
                 ],
             },
-            { test: /\.scss$/, loader: "style-loader!css-loader!sass-loader" },
+            // { test: /\.scss$/, loader: "style-loader!css-loader!sass-loader" },
             {
                 test: /(node_modules|src\/app\/ks-admin-font).*\.css$/,
                 loader: vendorCssPlugin.extract({

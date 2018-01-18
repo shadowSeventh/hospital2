@@ -17,8 +17,6 @@ function dev() {
     let domain = "//127.0.0.1:60129";
     let apiPath = domain + `/hospital/rs/api`;
 
-
-
     return Object.assign(baseObj, {
         apiPath: apiPath,
         maxSize: 8,                         // 页数多少多少翻页数

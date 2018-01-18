@@ -2,8 +2,12 @@ package top.ball.rice.hospital.server.resource.hospital.common.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import top.ball.rice.hospital.domain.QUser;
+import top.ball.rice.hospital.domain.User;
 import top.ball.rice.hospital.repo.UserRepo;
+import top.ball.rice.hospital.server.common.ErrStatus;
 import top.ball.rice.hospital.server.common.UniResp;
+import top.ball.rice.hospital.service.util.errorHandler.ErrStatusException;
 
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -26,9 +30,13 @@ public class LoginResource {
             @QueryParam(value = "passWord") String passWord
     ) {
 
-//        User user=userRepo.findOne(
-//                QUser.user.us
-//        );
+        User user=userRepo.findOne(
+                QUser.user.userName.eq(userName)
+        );
+
+        if (user==null){
+            throw new ErrStatusException(ErrStatus.UNLOGIN,"用户未登录");
+        }
 
         UniResp<String> resp = new UniResp<>();
         resp.setStatus(200);

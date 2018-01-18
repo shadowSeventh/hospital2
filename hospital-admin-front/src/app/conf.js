@@ -14,21 +14,12 @@ var baseObj = {
  */
 function dev() {
 
-    const devPort = "14300";            //开发端口
-    const apiPort = "14300";            //api端口
-
-    /////////////////////////////////////////////分割线
     let domain = "//127.0.0.1:60129";
-    // let rootUrl = `/local/${devPort}/admin`;
-    // let rootPath = domain + rootUrl;
     let apiPath = domain + `/hospital/rs/api`;
 
     let yunApiPath = `https://kingsilk.net/yun/rs/api`;
 
     return Object.assign(baseObj, {
-        // rootUrl: rootUrl,
-        // share: rootPath + "#/share",
-        // apiPath: apiPath,
         maxSize: 8,                         // 页数多少多少翻页数
         pageSize: 15,                       // 每页多少条数据
         imgUrl: "//img.kingsilk.net/",      // 图片地址

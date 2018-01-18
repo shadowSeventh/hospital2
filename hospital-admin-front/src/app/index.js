@@ -1,6 +1,6 @@
 import conf from "./conf";
 
-import "./css.scss";
+// import "./css.scss";
 import "normalize-css/normalize.css";
 import "animate.css/animate.css";
 // angular
