@@ -150,6 +150,147 @@ const config = {
         sourceMapFilename: '[file].map',
         publicPath: `${pkg.name}/`
     },
+    // module: {
+    //     rules: [
+    //         {
+    //             test: /\.js$/,
+    //             use: [
+    //                 {
+    //                     loader: 'babel-loader',
+    //                     options: {
+    //                         cacheDirectory: path.resolve(base, '.tmp')
+    //                     }
+    //                 }
+    //             ],
+    //             exclude: /node_modules/
+    //         },
+    //
+    //         {
+    //             test: /src\/app\/states\/.*\.css$/,
+    //             use: [
+    //                 "style-loader",
+    //                 {
+    //                     loader: 'css-loader',
+    //                     options: {
+    //                         minimize: true,
+    //                         sourcemap: true,
+    //                         discardComments: {
+    //                             removeAll: true
+    //                         },
+    //                         calc: false
+    //                     }
+    //                 }
+    //             ],
+    //         },
+    //         {
+    //             test: /src\/app\/.*\.scss$/,
+    //             use: [
+    //                 "style-loader",
+    //                 {
+    //                     loader: 'css-loader',
+    //                     options: {
+    //                         minimize: true,
+    //                         sourcemap: true,
+    //                         discardComments: {
+    //                             removeAll: true
+    //                         },
+    //                         calc: false
+    //                     }
+    //                 },
+    //                 "sass-loader"
+    //             ],
+    //         },
+    //         // { test: /\.scss$/, loader: "style-loader!css-loader!sass-loader" },
+    //         {
+    //             test: /(node_modules|src\/app\/ag-iconfont).*\.css$/,
+    //             loader: vendorCssPlugin.extract({
+    //                 fallback: 'style-loader',
+    //                 use: {
+    //                     loader: 'css-loader',
+    //                     // XXX : 需要关注 https://github.com/webpack/css-loader/pull/400
+    //                     options: {
+    //                         minimize: true,
+    //                         sourceMap: true,
+    //                         discardComments: {
+    //                             removeAll: true
+    //                         },
+    //                         calc: false
+    //                     }
+    //
+    //                 }
+    //             })
+    //         },
+    //         {
+    //             test: /(node_modules).*\.scss$/,
+    //             loader: appCssPlugin.extract(
+    //                 {
+    //                     fallback: 'style-loader',
+    //                     use: [
+    //                         {
+    //                             loader: 'css-loader',
+    //                             // XXX : 需要关注 https://github.com/webpack/css-loader/pull/400
+    //                             options: {
+    //                                 minimize: true,
+    //                                 sourceMap: true,
+    //                                 discardComments: {
+    //                                     removeAll: true
+    //                                 },
+    //                                 calc: false
+    //                             }
+    //                         },
+    //                         {
+    //                             loader: 'sass-loader',
+    //                             options: {
+    //                                 sourceMap: true
+    //                             }
+    //                         }
+    //                     ]
+    //                 })
+    //         },
+    //         {
+    //             test: /\.(woff|woff2|ttf|eot|svg)(\?]?.*)?$/,
+    //             use: [
+    //                 {
+    //                     loader: "file-loader",
+    //                     options: {
+    //                         name: "assets/fonts/[name]-[hash].[ext]",
+    //                         publicPath: './'　//重新指定访问路径　　参考　https://github.com/webpack-contrib/file-loader
+    //                     }
+    //                 }
+    //             ]
+    //         },
+    //
+    //         /*
+    //          * 这种打包字体的方式会直接以hash的方式重命名
+    //          * */
+    //         // {
+    //         //     test: /\.(woff|woff2|ttf|eot|svg)(\?]?.*)?$/,
+    //         //     loader: 'file-loader?publicPath=./&outputPath=assets/fonts/'
+    //         // },
+    //         /*
+    //          * 下面的方式可用
+    //          * */
+    //         // {
+    //         //     test: /\.(woff|woff2|ttf|eot|svg)(\?]?.*)?$/,
+    //         //     loader: 'file-loader',
+    //         //     options: {
+    //         //         name: "assets/fonts/[name]-[hash].[ext]",
+    //         //         publicPath: './'
+    //         //     }
+    //         // },
+    //         {
+    //             test: /\.(jpg|jepg|png|gif)(\?]?.*)?$/,
+    //             use: [
+    //                 {
+    //                     loader: "file-loader",
+    //                     options: {
+    //                         name: "assets/imgs/[name]-[hash].[ext]"
+    //                     }
+    //                 }
+    //             ]
+    //         }
+    //     ]
+    // },
     module: {
         rules: [
             {
@@ -166,129 +307,36 @@ const config = {
             },
 
             {
-                test: /src\/app\/states\/.*\.css$/,
-                use: [
-                    "style-loader",
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            minimize: true,
-                            sourcemap: true,
-                            discardComments: {
-                                removeAll: true
-                            },
-                            calc: false
-                        }
-                    }
-                ],
-            },
-            {
-                test: /src\/app\/.*\.scss$/,
-                use: [
-                    "style-loader",
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            minimize: true,
-                            sourcemap: true,
-                            discardComments: {
-                                removeAll: true
-                            },
-                            calc: false
-                        }
-                    },
-                    "sass-loader"
-                ],
-            },
-            // { test: /\.scss$/, loader: "style-loader!css-loader!sass-loader" },
-            {
-                test: /(node_modules|src\/app\/ag-iconfont).*\.css$/,
-                loader: vendorCssPlugin.extract({
-                    fallback: 'style-loader',
-                    use: {
-                        loader: 'css-loader',
-                        // XXX : 需要关注 https://github.com/webpack/css-loader/pull/400
-                        options: {
-                            minimize: true,
-                            sourceMap: true,
-                            discardComments: {
-                                removeAll: true
-                            },
-                            calc: false
-                        }
+                test: /\.scss$/,
+                use: [{
+                    loader: "style-loader"
+                }, {
+                    loader: "css-loader"
+                }, {
+                    loader: "sass-Loader",
+                    options: {
 
                     }
-                })
-            },
-            {
-                test: /(node_modules).*\.scss$/,
-                loader: appCssPlugin.extract(
-                    {
-                        fallback: 'style-loader',
-                        use: [
-                            {
-                                loader: 'css-loader',
-                                // XXX : 需要关注 https://github.com/webpack/css-loader/pull/400
-                                options: {
-                                    minimize: true,
-                                    sourceMap: true,
-                                    discardComments: {
-                                        removeAll: true
-                                    },
-                                    calc: false
-                                }
-                            },
-                            {
-                                loader: 'sass-loader',
-                                options: {
-                                    sourceMap: true
-                                }
-                            }
-                        ]
-                    })
-            },
-            {
-                test: /\.(woff|woff2|ttf|eot|svg)(\?]?.*)?$/,
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: "assets/fonts/[name]-[hash].[ext]",
-                            publicPath: './'　//重新指定访问路径　　参考　https://github.com/webpack-contrib/file-loader
-                        }
-                    }
-                ]
+                }]
+            },{
+                test: /\.css$/,
+                use: [{
+                    loader: "style-loader"
+                }, {
+                    loader: "css-loader"
+                }]
             },
 
-            /*
-             * 这种打包字体的方式会直接以hash的方式重命名
-             * */
-            // {
-            //     test: /\.(woff|woff2|ttf|eot|svg)(\?]?.*)?$/,
-            //     loader: 'file-loader?publicPath=./&outputPath=assets/fonts/'
-            // },
-            /*
-             * 下面的方式可用
-             * */
-            // {
-            //     test: /\.(woff|woff2|ttf|eot|svg)(\?]?.*)?$/,
-            //     loader: 'file-loader',
-            //     options: {
-            //         name: "assets/fonts/[name]-[hash].[ext]",
-            //         publicPath: './'
-            //     }
-            // },
+
+
             {
-                test: /\.(jpg|jepg|png|gif)(\?]?.*)?$/,
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: "assets/imgs/[name]-[hash].[ext]"
-                        }
+                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+                use: [{
+                    loader: "file-loader",
+                    options: {
+                        name: "assets/[name]-[hash].[ext]"
                     }
-                ]
-            }
+                }]}
         ]
     },
     plugins: plugins,
