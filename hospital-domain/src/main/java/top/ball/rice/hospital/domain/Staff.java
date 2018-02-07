@@ -10,6 +10,8 @@ import java.util.List;
  */
 @Entity
 public class Staff extends Base {
+
+    private String userId;
     /**
      * 是否已经禁用。
      * <p>
@@ -18,16 +20,17 @@ public class Staff extends Base {
     private boolean disabled;
 
     /**
-     * 权限列表。
-     * 暂时定义为有子活动的权限集合，有该子活动，就有权使用该子活动
-     */
-    @ElementCollection
-    private List<String> authorities = new ArrayList<>();
-
-    /**
      * 备注
      */
     private String memo;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public boolean isDisabled() {
         return disabled;
@@ -35,14 +38,6 @@ public class Staff extends Base {
 
     public void setDisabled(boolean disabled) {
         this.disabled = disabled;
-    }
-
-    public List<String> getAuthorities() {
-        return authorities;
-    }
-
-    public void setAuthorities(List<String> authorities) {
-        this.authorities = authorities;
     }
 
     public String getMemo() {

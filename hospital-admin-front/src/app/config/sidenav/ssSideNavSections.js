@@ -43,7 +43,7 @@ export default  [
         pages: [
             {
                 name: '医生管理',
-                state: 'main.hospital.home',
+                state: 'main.hospital.doctor',
                 authorities: ['APPLICATION_A', 'SA','APPLICATION_R'],       show:true,
             },
             {

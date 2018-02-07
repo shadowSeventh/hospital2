@@ -60,6 +60,8 @@ public interface ErrStatus {
     int PARTNER_401 = 11006;
 
     int UNLOGIN = 401;
+
+    int UNREGISTER =10001;
     /**
      * 退款金额错误（退款额大于实际支付额）
      */

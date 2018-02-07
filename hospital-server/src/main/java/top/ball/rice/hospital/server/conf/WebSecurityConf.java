@@ -15,21 +15,16 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import top.ball.rice.hospital.service.service.StaffUserDetailsService;
+import top.ball.rice.hospital.service.service.UserService;
 
 import java.util.Arrays;
 
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true, proxyTargetClass = true)
 public class WebSecurityConf {
 
-//    @Bean
-//    AuthenticationTrustResolver authenticationTrustResolver() {
-//        return new AuthenticationTrustResolverImpl();
-//    }
-
     @Bean
-    StaffUserDetailsService staffUserDetailsService() {
-        return new StaffUserDetailsService();
+    UserService userService() {
+        return new UserService();
     }
 
     @Bean
@@ -54,13 +49,13 @@ public class WebSecurityConf {
     WebSecurityConfigurerAdapter webSecurityConfigurerAdapter(
             CorsConfigurationSource corsConfigurationSource,
             PasswordEncoder passwordEncoder,
-            StaffUserDetailsService staffUserDetailsService
+            UserService userService
     ) {
         return new WebSecurityConfigurerAdapter() {
 
             @Override
             public void configure(AuthenticationManagerBuilder auth) throws Exception {
-                auth.userDetailsService(staffUserDetailsService).passwordEncoder(passwordEncoder);
+                auth.userDetailsService(userService).passwordEncoder(passwordEncoder);
             }
 
             @Override
@@ -86,10 +81,10 @@ public class WebSecurityConf {
                                 "/**/*.js"
                         ).permitAll()
                         // 对于获取token的rest api要允许匿名访问
-                        .antMatchers("/auth/**").permitAll()
-                        .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+                        .antMatchers("/login/**").permitAll()
+                        .requestMatchers(CorsUtils::isPreFlightRequest).permitAll().and()
                         //除上面外的所有请求全部需要鉴权认证
-                        .anyRequest().authenticated().and()
+//                        .anyRequest().authenticated().and()
                         .logout().permitAll();
 
 

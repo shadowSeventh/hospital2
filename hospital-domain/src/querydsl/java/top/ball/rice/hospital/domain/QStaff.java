@@ -7,7 +7,6 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
-import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -21,8 +20,6 @@ public class QStaff extends EntityPathBase<Staff> {
     public static final QStaff staff = new QStaff("staff");
 
     public final QBase _super = new QBase(this);
-
-    public final ListPath<String, StringPath> authorities = this.<String, StringPath>createList("authorities", String.class, StringPath.class, PathInits.DIRECT2);
 
     //inherited
     public final StringPath createdBy = _super.createdBy;
@@ -45,6 +42,8 @@ public class QStaff extends EntityPathBase<Staff> {
     public final DateTimePath<java.util.Date> lastModifiedDate = _super.lastModifiedDate;
 
     public final StringPath memo = createString("memo");
+
+    public final StringPath userId = createString("userId");
 
     public QStaff(String variable) {
         super(Staff.class, forVariable(variable));

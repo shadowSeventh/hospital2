@@ -49,6 +49,7 @@ allprojects {
         }
         dependencies {
             dependency('log4j:log4j:1.2.17')
+            dependency('org.apache.directory.studio:org.apache.commons.io:2.4')
             dependency('joda-time:joda-time:2.9.7')
 
             dependency('com.querydsl:querydsl-apt:4.1.4')
@@ -68,6 +69,7 @@ allprojects {
             dependency('org.kie.modules:org-apache-commons-lang3:6.5.0.Final')
 
             dependency('io.reactivex.rxjava2:rxjava:2.0.7')
+            dependency('com.github.shadowSeventh:distributed-lock:0.0.1-SNAPSHOT')
 
 
             dependency('org.springframework.security.activity:spring-security-oauth2:2.0.13.RELEASE')

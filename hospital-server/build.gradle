@@ -56,6 +56,7 @@ dependencies {
 
     compile('org.springframework.boot:spring-boot-starter-jersey')
     compile('org.glassfish.jersey.ext:jersey-spring3')
+    compile('com.github.shadowSeventh:distributed-lock')
 
     compile('org.springframework.session:spring-session')
 //    compile('org.springframework.session:spring-session-data-jpa')

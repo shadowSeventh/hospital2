@@ -6,5 +6,5 @@ include 'hospital-service'
 include 'hospital-server'
 include 'hospital-admin-front'
 include 'hospital-wap-front'
-
+include 'hospital-api'
 

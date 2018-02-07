@@ -30,6 +30,13 @@ export default [
         uiView: "articleAdd",
         curState: "main.hospital.articleAdd",
         disableClose: true
+    },
+    {
+        name: '医生管理',
+        matchStates: "main.hospital.doctor",
+        uiView: "doctor",
+        curState: "main.hospital.doctor",
+        disableClose: true
     }
 
 ];

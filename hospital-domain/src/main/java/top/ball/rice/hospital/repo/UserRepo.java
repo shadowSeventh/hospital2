@@ -6,5 +6,5 @@ import top.ball.rice.hospital.domain.User;
 
 @Repository
 public interface UserRepo extends BaseRepo<User, String> {
-
+    User findByUserName(String userName);
 }

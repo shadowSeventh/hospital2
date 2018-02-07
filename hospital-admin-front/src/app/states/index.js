@@ -9,6 +9,7 @@ import sMainHospitalHome from "./main/hospital/home";
 import sMainHospitalArticle from "./main/hospital/article";
 import sMainHospitalArticleList from "./main/hospital/article/list";
 import sMainHospitalArticleAdd from "./main/hospital/article/add";
+import sMainHospitalDoctorList from "./main/hospital/doctor";
 
 
 export default angular.module(`${conf.app}.states`, [
@@ -22,6 +23,7 @@ export default angular.module(`${conf.app}.states`, [
     sMainHospitalArticle.name,
     sMainHospitalArticleList.name,
     sMainHospitalArticleAdd.name,
+    sMainHospitalDoctorList.name,
 
 ])
 

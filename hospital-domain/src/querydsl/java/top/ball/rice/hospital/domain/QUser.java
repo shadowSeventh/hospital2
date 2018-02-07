@@ -21,6 +21,8 @@ public class QUser extends EntityPathBase<User> {
 
     public final QBase _super = new QBase(this);
 
+    public final StringPath addr = createString("addr");
+
     public final NumberPath<Integer> age = createNumber("age", Integer.class);
 
     public final StringPath contacts = createString("contacts");

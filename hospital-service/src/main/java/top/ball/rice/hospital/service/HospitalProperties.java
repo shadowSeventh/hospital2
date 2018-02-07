@@ -8,5 +8,23 @@ import org.springframework.stereotype.Component;
 @Component
 public class HospitalProperties {
 
+    private String addresses;
 
+    private Integer waitLockTime;
+
+    public String getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(String addresses) {
+        this.addresses = addresses;
+    }
+
+    public Integer getWaitLockTime() {
+        return waitLockTime;
+    }
+
+    public void setWaitLockTime(Integer waitLockTime) {
+        this.waitLockTime = waitLockTime;
+    }
 }

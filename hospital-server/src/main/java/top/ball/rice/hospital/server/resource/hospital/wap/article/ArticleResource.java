@@ -54,7 +54,7 @@ public class ArticleResource {
             @QueryParam(value = "title") String title
     ) {
         PageRequest pageRequest = new PageRequest(req.getPage(), req.getSize(),
-                new Sort(new Sort.Order(Sort.Direction.DESC, "dateCreated")));
+                new Sort(new Sort.Order(Sort.Direction.ASC, "dateCreated")));
 
         UniPageResp<ArticleInfoResp> uniPageResp = new UniPageResp<>();
 

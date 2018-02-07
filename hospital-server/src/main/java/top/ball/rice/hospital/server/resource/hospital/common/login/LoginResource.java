@@ -7,12 +7,15 @@ import top.ball.rice.hospital.domain.User;
 import top.ball.rice.hospital.repo.UserRepo;
 import top.ball.rice.hospital.server.common.ErrStatus;
 import top.ball.rice.hospital.server.common.UniResp;
+import top.ball.rice.hospital.service.service.SecurityService;
 import top.ball.rice.hospital.service.util.errorHandler.ErrStatusException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 @Component()
@@ -22,7 +25,12 @@ public class LoginResource {
     @Autowired
     private UserRepo userRepo;
 
-    @Path("/{id}")
+    @Autowired
+    private SecurityService securityService;
+
+
+
+    @Path("")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public UniResp<String> login(
@@ -30,13 +38,17 @@ public class LoginResource {
             @QueryParam(value = "passWord") String passWord
     ) {
 
-        User user=userRepo.findOne(
+        User user = userRepo.findOne(
                 QUser.user.userName.eq(userName)
         );
 
-        if (user==null){
-            throw new ErrStatusException(ErrStatus.UNLOGIN,"用户未登录");
+        securityService.autologin(userName, passWord);
+
+        if (user == null) {
+            throw new ErrStatusException(ErrStatus.UNREGISTER, "用户未注册");
         }
+
+
 
         UniResp<String> resp = new UniResp<>();
         resp.setStatus(200);

@@ -61,3 +61,6 @@ spring:
       hibernate:
         ddl-auto: create-drop
 
+distributed.lock:
+    addresses: 192.168.0.13:2110
+    waitLockTime: 1000

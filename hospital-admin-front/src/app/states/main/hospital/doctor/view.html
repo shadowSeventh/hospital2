@@ -1,0 +1,93 @@
+<!--引入ks-common-list放在最外面的div即可-->
+<div class="ks-common-list-member">
+    <div class="common-list-center">
+        <ul>
+            <li layout="row">
+                <label> 姓名：</label>
+                <input type="text" class="choose"  id="bhnum" ng-model="doctor.keyword">
+                <label> 科室：</label>
+                <input type="text" class="choose"  id="bhnum" ng-model="doctor.keyword">
+                <label> 状态：</label>
+                <input type="text" class="choose"  id="bhnum" ng-model="doctor.keyword">
+
+                <button class="inquire" ng-click="search()">
+                    搜索
+                </button>
+            </li>
+            <br style="clear: both">
+        </ul>
+    </div>
+
+    <!--rmy    div数据表详细信息-->
+    <div class="common-list-detail" layout="column">
+        <!--div数据表title-->
+        <div class="common-list-detail-thead" layout="row" layout-align="center center">
+            <!--<div flex>头像</div>-->
+            <!--<div flex>会员名</div>-->
+            <div class="thead-show" flex style="padding-left: 30px;">头像</div>
+            <div class="thead-show" flex>姓名</div>
+            <div class="thead-show" flex>联系方式</div>
+            <div class="thead-show" flex>科室</div>
+            <div class="thead-show end-show" flex>操作</div>
+        </div>
+        <!--div数据表详细信息-->
+        <div layout="column" class="common-list-detail-tbody">
+            <!--div数据主要显示区域  ng-repeat可用于此-->
+            <div class="common-list-detail-row" layout="row"
+                 ng-repeat="doctor in doctorList"
+                 layout-align="center stretch" layout="column">
+                <div class="thead-show" flex layout="column" style="padding-left: 30px;">
+                    <span> {{doctor.id}}</span>
+                </div>
+                <div class="thead-show" flex layout="column" >
+                    <span> {{doctor.phone}}</span>
+                </div>
+                <div class="thead-show" flex layout="column" >
+                    <span>{{doctor.partnerSeq}}</span>
+                </div>
+                
+                <div class="thead-show" flex layout="column">
+                    <span ng-if="doctor.disabled==='false'">正常</span>
+                    <span ng-if="doctor.disabled==='true'">已禁用</span>
+                </div>
+                <div class="thead-show" flex layout="row" layout-align="end center" style="padding-right: 20px;">
+                    <a class="glyphicon" title="查看" href="javascript:void(0)" style="min-width: 38px;"
+                    ui-sref="main.brandApp.mbAdd({id:doctor.id})" ng-if="PARTNERINFO_R">
+                    查看
+                    </a>
+                    <a class="glyphicon" title="编辑" href="javascript:void(0)" style="min-width: 38px;"
+                    ui-sref="main.brandApp.memEdit({id:doctor.id})" ng-if="PARTNERINFO_U">
+                    编辑
+                    </a>
+                    <a class="glyphicon" title="未启用：可以启用" href="javascript:void(0)" ng-if="doctor.disabled==='true' && 'PARTNERINFO_D'"
+                    ng-click="alert(doctor.id,false)" style="min-width: 38px;" >
+                    启用
+                    </a>
+                    <a class="glyphicon" title="未禁用：可以禁用" href="javascript:void(0)" ng-if="doctor.disabled==='false' && 'PARTNERINFO_D'"
+                    ng-click="alert(doctor.id, true)"  style="min-width: 38px;" >
+                    禁用
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--分页-->
+    <div style="width: 99%; margin: 10px auto 0">
+        <div style="width: 500px" uib-pagination total-items="data.totalElements" ng-model="curPage"
+             ng-change="pageChanged()"
+             class="pagination-sm col-sm-9" boundary-links="true" max-size="8" rotate="rotate"
+             items-per-page="data.size" previous-text="<" next-text=">" first-text="|<" last-text=">|">
+        </div>
+
+        <div style="float: right"  class="pageSubnav">
+            <span>共{{data.totalElements}}条</span>
+            <!--<span>页数{{data.number}} / {{data.totalPages}}</span>-->
+            到第<input type="text" ng-model="curPage">页
+            <md-button ng-click="pageChanged()">确定</md-button>
+        </div>
+    </div>
+
+</div>
+
