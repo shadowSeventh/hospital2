@@ -7,7 +7,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -38,7 +37,6 @@ public class WebSecurityConf {
         configuration.setAllowedOrigins(Arrays.asList("*"));
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
-//        configuration.setExposedHeaders(Arrays.asList("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
@@ -59,17 +57,10 @@ public class WebSecurityConf {
             }
 
             @Override
-            public void configure(WebSecurity web) throws Exception {
-                // empty
-            }
-
-
-            @Override
             protected void configure(HttpSecurity http) throws Exception {
 
                 // 只对以下路径规则应用该安全设置。
-                http
-                        .authorizeRequests()
+                http.authorizeRequests()
                         // 允许对于网站静态资源的无授权访问
                         .antMatchers(
                                 HttpMethod.GET,
@@ -87,14 +78,6 @@ public class WebSecurityConf {
 //                        .anyRequest().authenticated().and()
                         .logout().permitAll();
 
-
-//                http.sessionManagement()
-//                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-                // 默认对所有URL都开放权限
-//                http.authorizeRequests()
-//                        .anyRequest()
-//                        .permitAll();
 
                 // 对所有的路径均不使用 CSRF token （因为 stateless）
                 http.csrf().disable();

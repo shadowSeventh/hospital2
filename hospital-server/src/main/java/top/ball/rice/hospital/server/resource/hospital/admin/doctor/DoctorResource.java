@@ -1,13 +1,8 @@
 package top.ball.rice.hospital.server.resource.hospital.admin.doctor;
 
 
-import com.github.shadowseventh.distributed.lock.api.DisLock;
-import com.github.shadowseventh.distributed.lock.core.LockTypeEnum;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

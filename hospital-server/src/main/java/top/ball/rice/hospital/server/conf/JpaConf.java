@@ -31,16 +31,6 @@ class JpaConf {
         return new MyAuditorAware();
     }
 
-//    @Bean
-//    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-//        return new LocalContainerEntityManagerFactoryBean();
-//    }
-
-//    @Bean
-//    public DataSource dataSource() {
-//        return new MysqlDataSource();
-//    }
-
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
         LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
@@ -58,19 +48,6 @@ class JpaConf {
         hibernateJpaVendorAdapter.setDatabase(Database.MYSQL);
         return hibernateJpaVendorAdapter;
     }
-//    @Bean
-//    EntityManagerFactory entityManagerFactory() {
-//        return javax.persistence.Persistence.createEntityManagerFactory("jpaUnit");
-//    }
-//
-//    @Bean
-//    EntityManager entityManager(EntityManagerFactory entityManagerFactory) {
-//        return entityManagerFactory.createEntityManager();
-//    }
-
-    // SpringDataMongodbQuery
-    // QuerydslRepositorySupport
-
 
     class MyAuditorAware implements AuditorAware<String> {
 

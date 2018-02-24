@@ -30,36 +30,9 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-    compile("org.springframework.boot:spring-boot-devtools")
-
-    compile('com.fasterxml.jackson.dataformat:jackson-dataformat-xml')
-    compile('com.fasterxml.jackson.module:jackson-module-parameter-names')
-    compile('com.fasterxml.jackson.datatype:jackson-datatype-jdk8')
-    compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
-
-    compile('org.apache.httpcomponents:httpclient')
-    compile('org.springframework.security.oauth:spring-security-oauth2')
-    compile('org.springframework.security:spring-security-jwt')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile 'org.apache.poi:poi'
-    compile 'org.apache.poi:poi-ooxml'
-
-
-    compile('com.querydsl:querydsl-jpa')
-    compile('com.querydsl:querydsl-apt')
-    compile('com.querydsl:querydsl-core')
-    compile('joda-time:joda-time')
-
-
-    compile('org.apache.curator:curator-framework')
-    compile("org.springframework.integration:spring-integration-zookeeper")
-
-    compile('org.springframework.boot:spring-boot-starter-jersey')
-    compile('org.glassfish.jersey.ext:jersey-spring3')
-    compile('com.github.shadowSeventh:distributed-lock')
-
-    compile('org.springframework.session:spring-session')
-//    compile('org.springframework.session:spring-session-data-jpa')
+    compile("org.springframework.boot:spring-boot-devtools")
+//    compile('org.springframework.security.oauth:spring-security-oauth2')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 

@@ -1,7 +1,6 @@
 package top.ball.rice.hospital.service.service;
 
 import groovy.transform.CompileStatic;
-import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -69,9 +68,9 @@ public class CommonService {
     /**
      * 生成基于时间的编号
      */
-    public String getDateString() {
-        return DateTime.now().toString("yyyyMMddHHmmss") + new Random().nextInt(1000);
-    }
+//    public String getDateString() {
+//        return DateTime.now().toString("yyyyMMddHHmmss") + new Random().nextInt(1000);
+//    }
 
     /**
      * 生成随机8位邀请码

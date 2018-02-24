@@ -49,35 +49,20 @@ allprojects {
         }
         dependencies {
             dependency('log4j:log4j:1.2.17')
-            dependency('org.apache.directory.studio:org.apache.commons.io:2.4')
-            dependency('joda-time:joda-time:2.9.7')
+//            dependency('org.apache.directory.studio:org.apache.commons.io:2.4')
 
             dependency('com.querydsl:querydsl-apt:4.1.4')
             dependency('com.querydsl:querydsl-collections:4.1.4')
             dependency('com.querydsl:querydsl-core:4.1.4')
             dependency('com.querydsl:querydsl-jpa:4.1.4')
-
-            dependency('com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.7')
-            dependency('com.fasterxml.jackson.module:jackson-module-parameter-names:2.8.7')
-            dependency('com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.8.7')
-            dependency('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.7')
-            dependency('org.apache.poi:poi:3.15')
-            dependency('org.apache.poi:poi-ooxml:3.15')
+//            dependency('org.springframework.security:spring-security-core:5.0.1.RELEASE')
 
             dependency('mysql:mysql-connector-java:8.0.8-dmr')
-            dependency('org.apache.curator:curator-framework:2.10.0')
-            dependency('org.kie.modules:org-apache-commons-lang3:6.5.0.Final')
-
-            dependency('io.reactivex.rxjava2:rxjava:2.0.7')
-            dependency('com.github.shadowSeventh:distributed-lock:0.0.1-SNAPSHOT')
-
-
-            dependency('org.springframework.security.activity:spring-security-oauth2:2.0.13.RELEASE')
-            dependency('org.springframework.security:spring-security-jwt:1.0.7.RELEASE')
-
-            dependency('org.apache.curator:curator-recipes:2.9.1') {
-                exclude "log4j:log4j"
-            }
+//            dependency('org.apache.curator:curator-framework:2.10.0')
+//            dependency('io.reactivex.rxjava2:rxjava:2.0.7')
+//            dependency('org.apache.curator:curator-recipes:2.9.1') {
+//                exclude "log4j:log4j"
+//            }
             dependency("org.apache.commons:commons-lang3:3.5")
 
         }

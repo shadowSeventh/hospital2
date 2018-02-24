@@ -10,7 +10,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -57,12 +56,6 @@ public class SecService {
                 UserDetails userDetails = (UserDetails) passwdAuth.getPrincipal();
                 return userDetails.getUsername();
             }
-        }
-
-
-        if (curAuth instanceof OAuth2Authentication) {
-            OAuth2Authentication oauthAuth = (OAuth2Authentication) curAuth;
-            return getUsername(oauthAuth.getUserAuthentication());
         }
 
         log.warn("未处理的 Authentication 类型 : ${curAuth.getClass()}");

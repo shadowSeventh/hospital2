@@ -25,20 +25,18 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile("org.springframework.boot:spring-boot-devtools")
-    compile('com.fasterxml.jackson.dataformat:jackson-dataformat-xml')
     compile('org.apache.httpcomponents:httpclient')
     compile('org.springframework.boot:spring-boot-starter-actuator')
-
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    compile('org.springframework.security.oauth:spring-security-oauth2')
+    compile('org.springframework.security:spring-security-core')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.session:spring-session')
-    compile('joda-time:joda-time')
+    compile('org.springframework.boot:spring-boot-starter-jersey')
+    compile('org.glassfish.jersey.ext:jersey-spring3')
     compile 'mysql:mysql-connector-java'
-    compile 'org.kie.modules:org-apache-commons-lang3'
-    compile 'org.apache.poi:poi'
-    compile 'org.apache.poi:poi-ooxml'
+    compile 'org.apache.commons:commons-lang3'
 
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 test {
