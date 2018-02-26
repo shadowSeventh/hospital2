@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import top.ball.rice.hospital.server.resource.hospital.admin.doctor.DoctorResource;
 import top.ball.rice.hospital.server.resource.hospital.common.login.LoginResource;
+import top.ball.rice.hospital.server.resource.hospital.common.register.RegisterResource;
 import top.ball.rice.hospital.server.resource.hospital.wap.article.ArticleResource;
 
 import javax.ws.rs.container.ContainerResponseFilter;
@@ -47,10 +48,13 @@ public class JerseyConf {
 
         // 统一要求：全部注册实现类，而非接口类
 
+        resourceConfig.register(LoginResource.class);
+        resourceConfig.register(RegisterResource.class);
         resourceConfig.register(ArticleResource.class);
         resourceConfig.register(DoctorResource.class);
-        resourceConfig.register(LoginResource.class);
         resourceConfig.register(top.ball.rice.hospital.server.resource.hospital.admin.article.ArticleResource.class);
+
+
         resourceConfig.property(ServerProperties.RESPONSE_SET_STATUS_OVER_SEND_ERROR, true);
         resourceConfig.property(ServerProperties.PROCESSING_RESPONSE_ERRORS_ENABLED, true);
         return resourceConfig;

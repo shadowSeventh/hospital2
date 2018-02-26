@@ -10,7 +10,6 @@ var $scope,
     $stateParams,
     $location,
     alertService,
-    wxService,
     authService,
     $rootScope;
 class Controller {
@@ -25,7 +24,6 @@ class Controller {
                 _$stateParams,
                 _$location,
                 _alertService,
-                _wxService,
                 _authService,
                 _$rootScope) {
         $scope = _$scope;
@@ -41,7 +39,6 @@ class Controller {
         $mdBottomSheet = _$mdBottomSheet;
         $location = _$location;
         alertService = _alertService;
-        wxService = _wxService;
         /////////////////////////////////
 
         $scope.firstArr = [];
@@ -96,7 +93,6 @@ Controller.$inject = [
     '$stateParams',
     '$location',
     'alertService',
-    'wxService',
     'authService',
     '$rootScope'
 ];

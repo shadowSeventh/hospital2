@@ -1,6 +1,9 @@
 package top.ball.rice.hospital.server.resource.hospital.common.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 import org.springframework.stereotype.Component;
 import top.ball.rice.hospital.domain.QUser;
 import top.ball.rice.hospital.domain.User;
@@ -28,27 +31,25 @@ public class LoginResource {
     @Autowired
     private SecurityService securityService;
 
-
+    @Autowired
+    @Qualifier("authenticationManager") // bean id 在 <authentication-manager> 中设置
+    private AuthenticationManager authManager;
 
     @Path("")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public UniResp<String> login(
-            @QueryParam(value = "userName") String userName,
+            @QueryParam(value = "phone") String phone,
             @QueryParam(value = "passWord") String passWord
     ) {
 
         User user = userRepo.findOne(
-                QUser.user.userName.eq(userName)
+                QUser.user.phone.eq(phone)
         );
-
-        securityService.autologin(userName, passWord);
-
         if (user == null) {
             throw new ErrStatusException(ErrStatus.UNREGISTER, "用户未注册");
         }
-
-
+        securityService.autoLogin(user.getUserName(), passWord);
 
         UniResp<String> resp = new UniResp<>();
         resp.setStatus(200);

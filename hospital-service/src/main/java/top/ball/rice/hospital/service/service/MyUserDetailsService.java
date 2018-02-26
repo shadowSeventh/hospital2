@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class UserService implements UserDetailsService {
+public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserRepo userRepo;
@@ -43,7 +43,7 @@ public class UserService implements UserDetailsService {
     @Autowired
     private StaffRepo staffRepo;
 
-    public UserService() {
+    public MyUserDetailsService() {
 
     }
 
@@ -55,7 +55,7 @@ public class UserService implements UserDetailsService {
 
 
         Sufferer sufferer=suffererRepo.findOne(
-                QSufferer.sufferer.userId.eq(userName)
+                QSufferer.sufferer.userId.eq(user.getId())
         );
         Set<String> authoritySet = new HashSet<>();
         if (sufferer!=null){
@@ -114,10 +114,10 @@ public class UserService implements UserDetailsService {
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 //        for (Role role : user.getRoles()){
-        grantedAuthorities.add(new SimpleGrantedAuthority(""));
+        grantedAuthorities.add(new SimpleGrantedAuthority("user"));
 //        }
 
-        request.getSession().setAttribute("auth", user.getId());
+//        request.getSession().setAttribute("auth", user.getId());
         return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassWord(), grantedAuthorities);
 
 

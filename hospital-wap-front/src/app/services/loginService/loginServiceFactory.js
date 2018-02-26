@@ -6,27 +6,6 @@ function loginServiceFactory($q, $http, $state, $stateParams,$location) {
 
     const TAG = "loginService";
 
-    let setBrandAppId = (brandAppId) => {
-        store.set(conf.brandAppId, brandAppId);
-    };
-
-    let setAccessToken = (token) => {
-        store.set(conf.token, token);
-    };
-
-    let getBrandAppId = () => {
-        store.get(conf.brandAppId);
-        return store.get(conf.brandAppId);
-    };
-
-    let getAccessToken = () => {
-        if (!store.get(conf.token)) {
-            store.set(conf.token, null);
-            return;
-        }
-        store.get(conf.token);
-        return store.get(conf.token);
-    };
     /**
      * 判断权限
      * @param required getAuthorities
@@ -134,10 +113,10 @@ function loginServiceFactory($q, $http, $state, $stateParams,$location) {
     return {
         // getUserCtl: getUserCtl,
         loginCtl: loginCtl,
-        setBrandAppId: setBrandAppId,
-        setAccessToken: setAccessToken,
-        getBrandAppId: getBrandAppId,
-        getAccessToken: getAccessToken,
+        // setBrandAppId: setBrandAppId,
+        // setAccessToken: setAccessToken,
+        // getBrandAppId: getBrandAppId,
+        // getAccessToken: getAccessToken,
         getLocalStorage: getLocalStorage,
         setLocalStorage: setLocalStorage,
         getAuthorities: getAuthorities,

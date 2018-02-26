@@ -1,5 +1,6 @@
 package top.ball.rice.hospital.server.conf;
 
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
@@ -7,6 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,16 +16,18 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import top.ball.rice.hospital.service.service.UserService;
+import top.ball.rice.hospital.service.service.MyUserDetailsService;
 
 import java.util.Arrays;
 
+@Configurable
+@EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true, proxyTargetClass = true)
 public class WebSecurityConf {
 
     @Bean
-    UserService userService() {
-        return new UserService();
+    MyUserDetailsService myUserDetailsService() {
+        return new MyUserDetailsService();
     }
 
     @Bean
@@ -47,13 +51,13 @@ public class WebSecurityConf {
     WebSecurityConfigurerAdapter webSecurityConfigurerAdapter(
             CorsConfigurationSource corsConfigurationSource,
             PasswordEncoder passwordEncoder,
-            UserService userService
+            MyUserDetailsService myUserDetailsService
     ) {
         return new WebSecurityConfigurerAdapter() {
 
             @Override
             public void configure(AuthenticationManagerBuilder auth) throws Exception {
-                auth.userDetailsService(userService).passwordEncoder(passwordEncoder);
+                auth.userDetailsService(myUserDetailsService).passwordEncoder(passwordEncoder);
             }
 
             @Override
@@ -72,7 +76,7 @@ public class WebSecurityConf {
                                 "/**/*.js"
                         ).permitAll()
                         // 对于获取token的rest api要允许匿名访问
-                        .antMatchers("/login/**").permitAll()
+                        .antMatchers("/**").permitAll()
                         .requestMatchers(CorsUtils::isPreFlightRequest).permitAll().and()
                         //除上面外的所有请求全部需要鉴权认证
 //                        .anyRequest().authenticated().and()

@@ -44,11 +44,14 @@ class Controller {
         /////////////////////////////////
 
         $scope.user=[];
-        $scope.login = function () {
+        $scope.register = function () {
+            if($scope.user.pwd!=$scope.user.rePwd){
+                alertService.msgAlert("exclamation-circle", "密码不一致！");
+            }
 
             $http({
                 method: 'POST',
-                url: conf.apiPath + '/login',
+                url: conf.apiPath + '/register',
                 params: {
                     phone: $scope.user.phone,
                     passWord: $scope.user.pwd,

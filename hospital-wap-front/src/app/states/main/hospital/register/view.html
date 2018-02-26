@@ -1,16 +1,4 @@
 <div class="regPhone" flex layout="column" layout-align="start center">
-    <!--<div class="ks-white-header" layout="row">-->
-        <!--<div class="back-button" flex="20" ng-click="fallbackPage()">-->
-            <!--<md-icon class="ks-icon" md-font-set="ks-icon" md-font-icon="ag-arrow_left"></md-icon>-->
-        <!--</div>-->
-        <!--<h1 flex>我的会员</h1>-->
-        <!--<div class="right-button" flex="20">-->
-            <!--<md-icon class="btn-icon"  md-font-set="ks-icon"-->
-                     <!--md-font-icon="ag-default-head"></md-icon>-->
-        <!--</div>-->
-    <!--</div>-->
-
-
     <div class="regPhone-con">
         <div class="con-ts">手机号</div>
         <div class="form" layout="column">
@@ -27,11 +15,19 @@
                 <div class="sLine"></div>
                 <!--<div flex="35" class="getPwd" ng-click="getVCcode()">{{gitCodeTime}}</div>-->
             </div>
-
+            <div class="line"></div>
+            <div class="con-ts">密码</div>
+            <div flex layout="row" layout-align="start center" class="phoneCode">
+                <div flex class="left">
+                    <input type="tel" placeholder="密码" ng-model="user.rePwd" >
+                </div>
+                <div class="sLine"></div>
+                <!--<div flex="35" class="getPwd" ng-click="getVCcode()">{{gitCodeTime}}</div>-->
+            </div>
             <div class="line"></div>
         </div>
-        <div class="login-btn" ng-click="login()">
-            登录
+        <div class="register-btn" ng-click="register()">
+            注册
         </div>
     </div>
 
