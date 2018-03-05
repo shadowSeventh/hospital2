@@ -1,5 +1,6 @@
 package top.ball.rice.hospital.server.conf;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
@@ -10,8 +11,11 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.CorsUtils;
@@ -47,11 +51,24 @@ public class WebSecurityConf {
     }
 
     @Bean
+    public SessionRegistry sessionRegistry() {
+        return new SessionRegistryImpl();
+
+    }
+
+    //SpringSecurity内置的session监听器
+//    @Bean
+//    public HttpSessionEventPublisher httpSessionEventPublisher() {
+//        return new HttpSessionEventPublisher();
+//    }
+
+    @Bean
     @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
     WebSecurityConfigurerAdapter webSecurityConfigurerAdapter(
             CorsConfigurationSource corsConfigurationSource,
             PasswordEncoder passwordEncoder,
-            MyUserDetailsService myUserDetailsService
+            MyUserDetailsService myUserDetailsService,
+            SessionRegistry sessionRegistry
     ) {
         return new WebSecurityConfigurerAdapter() {
 
@@ -82,6 +99,11 @@ public class WebSecurityConf {
 //                        .anyRequest().authenticated().and()
                         .logout().permitAll();
 
+
+//                http.sessionManagement()//只允许一个用户登录,如果同一个账户两次登录,那么第一个账户将被踢下线,跳转到登录页面
+//                        .maximumSessions(1)
+//                        .sessionRegistry(sessionRegistry);
+//                        .expiredUrl("/login.html");
 
                 // 对所有的路径均不使用 CSRF token （因为 stateless）
                 http.csrf().disable();

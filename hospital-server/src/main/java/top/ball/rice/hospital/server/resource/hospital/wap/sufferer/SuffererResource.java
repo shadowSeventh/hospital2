@@ -13,6 +13,7 @@ import top.ball.rice.hospital.repo.UserRepo;
 import top.ball.rice.hospital.server.common.UniResp;
 import top.ball.rice.hospital.server.resource.hospital.wap.sufferer.dto.SuffererInfoResp;
 import top.ball.rice.hospital.server.resource.hospital.wap.sufferer.dto.SuffererSaveReq;
+import top.ball.rice.hospital.service.service.SecService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -32,14 +33,17 @@ public class SuffererResource {
     @Autowired
     private UserRepo userRepo;
 
-    @Path("/{id}")
+    @Autowired
+    private SecService secService;
+
+    @Path("")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public UniResp<SuffererInfoResp> info(
-            @PathParam(value = "id") String id
     ) {
-
-        Sufferer sufferer = suffererRepo.findOne(id);
+        String userId=secService.curUserId();
+        User user = userRepo.findOne(userId);
+        Sufferer sufferer = suffererRepo.findByUserId(user.getId());
         Assert.notNull(sufferer, "患者信息错误");
         SuffererInfoResp infoResp = conversionService.convert(sufferer, SuffererInfoResp.class);
         UniResp<SuffererInfoResp> resp = new UniResp<>();
@@ -49,7 +53,7 @@ public class SuffererResource {
     }
 
     @Path("")
-    @GET
+    @POST
     @Produces(MediaType.APPLICATION_JSON)
     public UniResp<String> save(
             @BeanParam SuffererSaveReq req

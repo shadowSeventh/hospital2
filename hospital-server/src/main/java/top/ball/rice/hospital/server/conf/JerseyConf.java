@@ -11,6 +11,7 @@ import top.ball.rice.hospital.server.resource.hospital.admin.doctor.DoctorResour
 import top.ball.rice.hospital.server.resource.hospital.common.login.LoginResource;
 import top.ball.rice.hospital.server.resource.hospital.common.register.RegisterResource;
 import top.ball.rice.hospital.server.resource.hospital.wap.article.ArticleResource;
+import top.ball.rice.hospital.server.resource.hospital.wap.sufferer.SuffererResource;
 
 import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.core.MediaType;
@@ -47,12 +48,17 @@ public class JerseyConf {
         // http://docs.spring.io/spring-boot/docs/1.5.1.RELEASE/reference/htmlsingle/#boot-features-jersey
 
         // 统一要求：全部注册实现类，而非接口类
-
+        //common
         resourceConfig.register(LoginResource.class);
         resourceConfig.register(RegisterResource.class);
-        resourceConfig.register(ArticleResource.class);
-        resourceConfig.register(DoctorResource.class);
+
+        //admin
         resourceConfig.register(top.ball.rice.hospital.server.resource.hospital.admin.article.ArticleResource.class);
+        resourceConfig.register(DoctorResource.class);
+
+        //wap
+        resourceConfig.register(ArticleResource.class);
+        resourceConfig.register(SuffererResource.class);
 
 
         resourceConfig.property(ServerProperties.RESPONSE_SET_STATUS_OVER_SEND_ERROR, true);
