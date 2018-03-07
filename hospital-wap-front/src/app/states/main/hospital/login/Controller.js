@@ -55,6 +55,7 @@ class Controller {
                     // size: conf.pageSize,
                     // page: page,
                 },
+                withCredentials: true
             }).then(function (resp) {
 
 
