@@ -8,11 +8,13 @@ import org.springframework.security.authentication.AuthenticationTrustResolver;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.Context;
 
 /**
  * 参考 grails 插件 spring-security-core 的相关代码。
@@ -27,8 +29,11 @@ public class SecService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-    //@Autowired
+
+    @Autowired
     private AuthenticationTrustResolver authenticationTrustResolver;
+
+
 
     /**
      * 获取当前登录用户的名称（实际是 Staff#id）

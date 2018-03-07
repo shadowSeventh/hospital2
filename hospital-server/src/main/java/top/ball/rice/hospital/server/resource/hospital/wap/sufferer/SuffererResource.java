@@ -41,8 +41,8 @@ public class SuffererResource {
     @Produces(MediaType.APPLICATION_JSON)
     public UniResp<SuffererInfoResp> info(
     ) {
-        String userId=secService.curUserId();
-        User user = userRepo.findOne(userId);
+        String userName=secService.curUserId();
+        User user = userRepo.findByUserName(userName);
         Sufferer sufferer = suffererRepo.findByUserId(user.getId());
         Assert.notNull(sufferer, "患者信息错误");
         SuffererInfoResp infoResp = conversionService.convert(sufferer, SuffererInfoResp.class);

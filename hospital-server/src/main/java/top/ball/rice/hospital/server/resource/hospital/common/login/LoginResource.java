@@ -3,6 +3,7 @@ package top.ball.rice.hospital.server.resource.hospital.common.login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 import org.springframework.stereotype.Component;
 import top.ball.rice.hospital.domain.QUser;
@@ -14,6 +15,7 @@ import top.ball.rice.hospital.service.service.SecurityService;
 import top.ball.rice.hospital.service.util.errorHandler.ErrStatusException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -31,9 +33,8 @@ public class LoginResource {
     @Autowired
     private SecurityService securityService;
 
-    @Autowired
-    @Qualifier("authenticationManager") // bean id 在 <authentication-manager> 中设置
-    private AuthenticationManager authManager;
+    @Context
+    private HttpServletRequest request;
 
     @Path("")
     @POST
@@ -42,7 +43,6 @@ public class LoginResource {
             @QueryParam(value = "phone") String phone,
             @QueryParam(value = "passWord") String passWord
     ) {
-
         User user = userRepo.findOne(
                 QUser.user.phone.eq(phone)
         );
@@ -51,6 +51,8 @@ public class LoginResource {
         }
         securityService.autoLogin(user.getUserName(), passWord);
 
+        request.getSession()
+                .setAttribute("SPRING_SECURITY_CONTEXT","222222222");
         UniResp<String> resp = new UniResp<>();
         resp.setStatus(200);
         resp.setData("登录成功");

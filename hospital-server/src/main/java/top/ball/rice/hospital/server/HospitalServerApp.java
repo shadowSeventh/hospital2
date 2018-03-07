@@ -6,10 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  *
  */
-@SpringBootApplication(scanBasePackages = {
-        "top.ball.rice.hospital"
-        , "com.github.shadowseventh.distributed.lock"})
-//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class,HibernateJpaAutoConfiguration.class})
+@SpringBootApplication(scanBasePackages = {"top.ball.rice.hospital"})
 public class HospitalServerApp {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(HospitalServerApp.class, args);

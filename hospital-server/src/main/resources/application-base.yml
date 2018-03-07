@@ -4,31 +4,22 @@ server:
   port: 60129
   context-path: /hospital/rs
   error.include-stacktrace: on_trace_param
-  session.timeout: 86400  # 24 小时
-
-# ResourceServerProperties
-security.oauth2.resource:
-  filterOrder: 90
-
+  session:
+    timeout: 86400  # 24 小时
+    cookie.path: /hospital/rs
 # SecurityProperties
 security:
   basic.enabled: false
+
+# SessionProperties
+spring.session:
+    store-type: JDBC
 
 # LOGGING
 logging:
   path: /data0/store/app/qh-bargain/qh-bargain-server/logs/
   level:
     root: INFO
-
-
-# SessionProperties
-spring.session:
-    store-type: JDBC
-
-
-# DevToolsProperties
-
-# AuthorizationServerProperties
 
 # JacksonProperties
 spring.jackson:
@@ -60,7 +51,3 @@ spring:
       show-sql: true
       hibernate:
         ddl-auto: create-drop
-
-distributed.lock:
-    addresses: 192.168.0.13:2110
-    waitLockTime: 1000

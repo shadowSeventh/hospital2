@@ -5,14 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.RequestContextHolder;
-import top.ball.rice.hospital.service.authInfo.UserAuthInfo;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Context;
@@ -24,9 +22,6 @@ public class SecurityService {
 
     @Autowired
     private UserDetailsService userDetailsService;
-
-    @Autowired
-    private SessionRegistry sessionRegistry;
 
     @Context
     private HttpServletRequest request;
@@ -46,19 +41,10 @@ public class SecurityService {
         UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 
-        authenticationManager.authenticate(token);
+        Authentication authResult = authenticationManager.authenticate(token);
 
         if (token.isAuthenticated()) {
-            SecurityContextHolder.getContext().setAuthentication(token);
-
-
-//            RequestContextHolder.currentRequestAttributes().setAttribute(
-//                    UserAuthInfo.SESSION_KEY,
-//                    token,
-//                    RequestAttributes.SCOPE_SESSION
-//            );
-//            sessionRegistry.registerNewSession(request.getSession().getId(), token.getPrincipal());
-            logger.debug(String.format("Auto login %s successfully!", userName));
+            SecurityContextHolder.getContext().setAuthentication(authResult);
         }
     }
 }
