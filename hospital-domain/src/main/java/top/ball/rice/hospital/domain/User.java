@@ -56,7 +56,20 @@ public class User extends Base {
      */
     private String telephone;
 
+    /**
+     * 地址
+     */
     private String addr;
+
+    /**
+     * 身高
+     */
+    private Integer height;
+
+    /**
+     * 体重
+     */
+    private Integer weight;
 
     public String getUserName() {
         return userName;
@@ -144,5 +157,21 @@ public class User extends Base {
 
     public void setAddr(String addr) {
         this.addr = addr;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
     }
 }

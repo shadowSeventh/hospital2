@@ -4,4 +4,5 @@ import top.ball.rice.hospital.server.common.UserInfo;
 
 public class SuffererInfoResp extends UserInfo {
 
+
 }

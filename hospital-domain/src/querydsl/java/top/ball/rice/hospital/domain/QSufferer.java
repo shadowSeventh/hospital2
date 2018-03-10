@@ -30,8 +30,6 @@ public class QSufferer extends EntityPathBase<Sufferer> {
     //inherited
     public final BooleanPath deleted = _super.deleted;
 
-    public final NumberPath<Integer> height = createNumber("height", Integer.class);
-
     //inherited
     public final StringPath id = _super.id;
 
@@ -42,8 +40,6 @@ public class QSufferer extends EntityPathBase<Sufferer> {
     public final DateTimePath<java.util.Date> lastModifiedDate = _super.lastModifiedDate;
 
     public final StringPath userId = createString("userId");
-
-    public final NumberPath<Integer> weight = createNumber("weight", Integer.class);
 
     public QSufferer(String variable) {
         super(Sufferer.class, forVariable(variable));

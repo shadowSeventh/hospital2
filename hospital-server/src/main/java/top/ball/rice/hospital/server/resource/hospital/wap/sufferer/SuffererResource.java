@@ -91,12 +91,12 @@ public class SuffererResource {
         user.setIDNum(req.getIDNum());
         user.setContacts(req.getContacts());
         user.setTelephone(req.getTelephone());
+        user.setHeight(user.getHeight());
+        user.setWeight(user.getWeight());
 
         userRepo.save(user);
 
         sufferer.setUserId(user.getId());
-        sufferer.setHeight(req.getHeight());
-        sufferer.setWeight(req.getWeight());
 
         suffererRepo.save(sufferer);
 

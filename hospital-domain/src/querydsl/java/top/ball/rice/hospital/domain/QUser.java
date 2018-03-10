@@ -38,6 +38,8 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath headImg = createString("headImg");
 
+    public final NumberPath<Integer> height = createNumber("height", Integer.class);
+
     //inherited
     public final StringPath id = _super.id;
 
@@ -60,6 +62,8 @@ public class QUser extends EntityPathBase<User> {
     public final StringPath telephone = createString("telephone");
 
     public final StringPath userName = createString("userName");
+
+    public final NumberPath<Integer> weight = createNumber("weight", Integer.class);
 
     public QUser(String variable) {
         super(User.class, forVariable(variable));

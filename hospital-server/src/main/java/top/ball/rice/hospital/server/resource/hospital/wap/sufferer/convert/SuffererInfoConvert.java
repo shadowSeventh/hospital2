@@ -24,7 +24,6 @@ public class SuffererInfoConvert implements Converter<Sufferer, SuffererInfoResp
         resp.setId(source.getId());
         resp.setUserName(user.getUserName());
         resp.setNickName(user.getNickName());
-        resp.setPassWord(user.getPassWord());
         resp.setHeadImg(user.getHeadImg());
         resp.setPhone(user.getPhone());
         resp.setSex(user.getSex());
@@ -32,8 +31,8 @@ public class SuffererInfoConvert implements Converter<Sufferer, SuffererInfoResp
         resp.setIDNum(user.getIDNum());
         resp.setContacts(user.getContacts());
         resp.setTelephone(user.getTelephone());
-        resp.setHeight(source.getHeight());
-        resp.setWeight(source.getWeight());
+        resp.setHeight(user.getHeight());
+        resp.setWeight(user.getWeight());
         return resp;
     }
 }
