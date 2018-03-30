@@ -1,7 +1,6 @@
 package top.ball.rice.hospital.server.resource.hospital.wap.article;
 
 
-import com.github.shadowseventh.distributed.lock.api.DisLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.convert.ConversionService;
@@ -50,10 +49,9 @@ public class ArticleResource {
     @Path("/list")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @DisLock()
     public UniResp<UniPageResp<ArticleInfoResp>> list(
             @BeanParam UniPageReq req,
-            @QueryParam(value = "title") String title
+            @QueryParam(value = "type") String type
     ) {
         PageRequest pageRequest = new PageRequest(req.getPage(), req.getSize(),
                 new Sort(new Sort.Order(Sort.Direction.ASC, "dateCreated")));
@@ -62,7 +60,7 @@ public class ArticleResource {
 
         articleRepo.findAll(
                 allOf(
-                        title != null ? QArticle.article.title.eq(title) : null,
+                        type != null ? QArticle.article.type.eq(type) : null,
                         QArticle.article.deleted.ne(true)
                 ), pageRequest
         ).forEach(

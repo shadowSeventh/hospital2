@@ -45,6 +45,8 @@ public class ArticleResource {
                     String title,
             @QueryParam(value = "headImg")
                     String headImg,
+            @QueryParam(value = "type")
+                    String type,
             @QueryParam(value = "content")
                     String content,
             @QueryParam(value = "status")
@@ -60,6 +62,13 @@ public class ArticleResource {
         }
 
         article.setTitle(title);
+        if ("true".equals(type)) {
+            article.setType("head");
+        } else {
+            article.setType("content");
+        }
+
+
         article.setHeadImg(headImg);
         article.setContent(content);
         article.setStatus(ArticleStatusEnum.valueOf(status));

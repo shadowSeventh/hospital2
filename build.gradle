@@ -63,7 +63,7 @@ allprojects {
 //            dependency('org.apache.curator:curator-recipes:2.9.1') {
 //                exclude "log4j:log4j"
 //            }
-            dependency('com.github.shadowSeventh:distributed-lock:0.0.1-SNAPSHOT')
+//            dependency('com.github.shadowSeventh:distributed-lock:0.0.1-SNAPSHOT')
             dependency("org.apache.commons:commons-lang3:3.5")
 
         }

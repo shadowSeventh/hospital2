@@ -34,7 +34,7 @@ dependencies {
     compile('org.glassfish.jersey.ext:jersey-spring3')
     compile 'mysql:mysql-connector-java'
     compile 'org.apache.commons:commons-lang3'
-    compile('com.github.shadowSeventh:distributed-lock')
+//    compile('com.github.shadowSeventh:distributed-lock')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

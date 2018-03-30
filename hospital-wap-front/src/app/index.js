@@ -19,7 +19,6 @@ import config from "./config";
 import "ui-router-extras";
 import runState from "./runState";
 import uiRouter from "angular-ui-router";
-
 import "./libs";
 import  states from "./states";
 import 'weui';
@@ -29,6 +28,7 @@ import 'weui';
 console.log('config', config)
 export default angular.module(`${conf.app}`, [
     uiRouter,
+    "ksSwiper",
     ngMaterial,
     services.name,
     filters.name,

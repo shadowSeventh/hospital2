@@ -36,11 +36,8 @@ class Controller {
         $rootScope.titleName = '活动图文编辑';
         $scope.id = $stateParams.id;
 
-        console.log($scope.id );
+        console.log($scope.id);
         $scope.data = [];
-
-
-
 
 
         //yun图片上传
@@ -109,16 +106,17 @@ class Controller {
         };
         $scope.editor.create();
 
-        $scope.pageSave=function () {
+        $scope.pageSave = function () {
             console.log($scope.data.title)
             $http({
                 method: 'POST',
                 url: conf.apiPath + '/admin/article/',
                 params: {
                     title: $scope.data.title,
-                    headImg : $scope.data.headImg,
+                    headImg: $scope.data.headImg,
+                    type: $scope.data.type,
                     content: $scope.editor.txt.html(),
-                    status : 'EDITING',
+                    status: 'EDITING',
                 }
             }).then(function (resp) {
                 // console.log('Success ' + resp.data.data.cdnUrls[0].url);
@@ -129,10 +127,10 @@ class Controller {
         };
 
 
-        $scope.init=function () {
+        $scope.init = function () {
             $http({
                 method: 'GET',
-                url: conf.apiPath + '/wap/article/'+$scope.id,
+                url: conf.apiPath + '/wap/article/' + $scope.id,
             }).then(function (resp) {
                 console.log(resp.data.data);
                 $scope.data = resp.data.data;
@@ -141,11 +139,11 @@ class Controller {
             });
         };
 
-        if($scope.id!=null){
+        if ($scope.id != null) {
             $scope.init();
         }
 
-        $scope.pageCancle=function () {
+        $scope.pageCancle = function () {
             $scope.fallbackPage();
         };
         $scope.fallbackPage = function () {
