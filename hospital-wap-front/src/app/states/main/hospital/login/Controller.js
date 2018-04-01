@@ -57,7 +57,7 @@ class Controller {
                 },
                 // withCredentials: true
             }).then(function (resp) {
-
+                authService.setAuthorities();
 
             }, function (resp) {
             });

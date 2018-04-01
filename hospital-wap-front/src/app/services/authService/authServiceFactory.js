@@ -116,8 +116,6 @@ function authServiceFactory($http, loginService, $injector, $state, $q) {
     }
 
     let loginCtl = (required, backUrl) => {
-        console.log(`${TAG} => loginCtl`);
-
         if (!required) {
             return;
         }

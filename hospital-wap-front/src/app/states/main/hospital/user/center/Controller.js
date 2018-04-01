@@ -45,6 +45,7 @@ class Controller {
 
 
         authService.loginCtl(true);
+        console.log(123333333)
     //     $scope.user = [];
     //     $scope.register = function () {
     //         if ($scope.user.pwd != $scope.user.rePwd) {
