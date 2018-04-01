@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import top.ball.rice.hospital.server.resource.hospital.admin.doctor.DoctorResource;
+import top.ball.rice.hospital.server.resource.hospital.common.home.AuthoritiesResource;
 import top.ball.rice.hospital.server.resource.hospital.common.login.LoginResource;
 import top.ball.rice.hospital.server.resource.hospital.common.register.RegisterResource;
 import top.ball.rice.hospital.server.resource.hospital.wap.article.ArticleResource;
@@ -51,6 +52,7 @@ public class JerseyConf {
         //common
         resourceConfig.register(LoginResource.class);
         resourceConfig.register(RegisterResource.class);
+        resourceConfig.register(AuthoritiesResource.class);
 
         //admin
         resourceConfig.register(top.ball.rice.hospital.server.resource.hospital.admin.article.ArticleResource.class);

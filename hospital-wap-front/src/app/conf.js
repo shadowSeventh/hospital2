@@ -16,9 +16,11 @@ function dev() {
 
     let domain = "//127.0.0.1:60129";
     let apiPath = domain + `/hospital/rs/api`;
+    let authorSet = `hospital-wap-front.authorSet`;
 
     return Object.assign(baseObj, {
         apiPath: apiPath,
+        authorSet: authorSet,
         maxSize: 8,                         // 页数多少多少翻页数
         pageSize: 10,                       // 每页多少条数据
         imgView1: "?imageView2/2/w/100/h/100",// 对图片进行缩放

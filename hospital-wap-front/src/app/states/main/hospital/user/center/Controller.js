@@ -43,27 +43,29 @@ class Controller {
         alertService = _alertService;
         /////////////////////////////////
 
-        $scope.user=[];
-        $scope.register = function () {
-            if($scope.user.pwd!=$scope.user.rePwd){
-                alertService.msgAlert("exclamation-circle", "密码不一致！");
-            }
 
-            $http({
-                method: 'POST',
-                url: conf.apiPath + '/register',
-                params: {
-                    phone: $scope.user.phone,
-                    passWord: $scope.user.pwd,
-                    // size: conf.pageSize,
-                    // page: page,
-                },
-            }).then(function (resp) {
-
-
-            }, function (resp) {
-            });
-        };
+        authService.loginCtl(true);
+    //     $scope.user = [];
+    //     $scope.register = function () {
+    //         if ($scope.user.pwd != $scope.user.rePwd) {
+    //             alertService.msgAlert("exclamation-circle", "密码不一致！");
+    //         }
+    //
+    //         $http({
+    //             method: 'POST',
+    //             url: conf.apiPath + '/register',
+    //             params: {
+    //                 phone: $scope.user.phone,
+    //                 passWord: $scope.user.pwd,
+    //                 // size: conf.pageSize,
+    //                 // page: page,
+    //             },
+    //         }).then(function (resp) {
+    //
+    //
+    //         }, function (resp) {
+    //         });
+    //     };
     }
 }
 

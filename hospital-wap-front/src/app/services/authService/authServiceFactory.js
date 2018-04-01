@@ -1,8 +1,9 @@
 import conf from "../../conf";
 import store from "store";
-authServiceFactory.$inject = ['$http', 'loginService','$injector','$state','$q'];
 
-function authServiceFactory($http, loginService,$injector,$state,$q) {
+authServiceFactory.$inject = ['$http', 'loginService', '$injector', '$state', '$q'];
+
+function authServiceFactory($http, loginService, $injector, $state, $q) {
 
     function update(a) {
         var ssSideNavSections = $injector.get('ssSideNavSections');
@@ -47,52 +48,44 @@ function authServiceFactory($http, loginService,$injector,$state,$q) {
     }
 
 
-
-
-
-
-
-    function setAuthorities(brandAppId,storeId) {
+    function setAuthorities(brandAppId, storeId) {
         var deferred = $q.defer();
-        // $http({
-        //     method: "GET",
-        //     url: conf.apiPath + "/brandApp/" + brandAppId +'/shop/'+ storeId + "/authorities",
-        //     data: {},
-        //     headers: {
-        //         'Authorization': 'Bearer ' + store.get(conf.token),
-        //         'brandApp-Id': brandAppId,
-        //         'shopId':storeId
-        //     }
-        // }).then(function (data) {
-        //         if(data.data.data){
-        //             store.set(conf.authorSet, data.data.data)
-        //             deferred.resolve(true);//这就是等待的结果
-        //             console.log('212121212',deferred);
-        //         }else {
-        //             store.set(conf.authorSet,null);
-        //         }
-        // },function (response) {
-        //     store.set(conf.authorSet,null);
-        //     if(response.status == '401'){
-        //         jso.wipeTokens();
-        //         loginService.setAccessToken(null);
-        //         loginService.setbrandAppId(null);
-        //         $http({
-        //             method: "POST",
-        //             url: "https:" + conf.oauthPath +"/logout",
-        //             headers: {},
-        //             params: {},
-        //             withCredentials:true,
-        //         }).success(function (resp) {
-        //             // console.log('data', resp);
-        //             location.reload();
-        //         },function(resp){
-        //             console.log('ERR', resp);
-        //         });
-        //     }else if(response.data.status == '10029'){
-        //         $state.go('main.brandApp.authorities');      //-------跳转到无权限页面
-        //     }
-        // });
+        $http({
+            method: "GET",
+            url: conf.apiPath + "authorities",
+            data: {},
+            headers: {}
+        }).then(function (data) {
+            if (data.data.data) {
+                store.set(conf.authorSet, data.data.data)
+                deferred.resolve(true);//这就是等待的结果
+                console.log('212121212', deferred);
+            } else {
+                store.set(conf.authorSet, null);
+            }
+        }, function (response) {
+            store.set(conf.authorSet, null);
+            if (response.status == '401') {
+                // jso.wipeTokens();
+                // loginService.setAccessToken(null);
+                // loginService.setbrandAppId(null);
+                // $http({
+                //     method: "POST",
+                //     url: conf.apiPath + "/login",
+                //     headers: {},
+                //     params: {},
+                //     withCredentials: true,
+                // }).success(function (resp) {
+                //     // console.log('data', resp);
+                //     location.reload();
+                // }, function (resp) {
+                //     console.log('ERR', resp);
+                // });
+                $state.go('main.hospital.login');
+            } else if (response.data.status == '10029') {
+                $state.go('main.brandApp.authorities');      //-------跳转到无权限页面
+            }
+        });
         return deferred.promise;
     }
 
@@ -107,9 +100,9 @@ function authServiceFactory($http, loginService,$injector,$state,$q) {
         if (!auth) {
             auth = []
         }
-        if(auth.indexOf(author) > -1 || auth.indexOf('SA') >-1){
+        if (auth.indexOf(author) > -1 || auth.indexOf('SA') > -1) {
             return true
-        }else {
+        } else {
             return false
         }
 
@@ -122,8 +115,28 @@ function authServiceFactory($http, loginService,$injector,$state,$q) {
         // return false
     }
 
+    let loginCtl = (required, backUrl) => {
+        console.log(`${TAG} => loginCtl`);
+
+        if (!required) {
+            return;
+        }
+        if (!getAuthorities()) {
+            // alert('未登录，跳转到登录页');
+            console.log("未登录，跳转到登录页");
+            // TODO 登录跳转前访问的最后一个URl(backUrl) 保存到 localStorage 中
+            // store.set('login_backUrl', backUrl);
+            $state.go('main.hospital.login');
+        } else {
+            // getAuthorities();
+            // alert('loginCtl');
+            // return getUserCtl(true,backUrl);
+        }
+
+    };
 
     return {
+        loginCtl: loginCtl,
         hasAuthor: hasAuthor,
         setAuthorities: setAuthorities,
         getAuthorities: getAuthorities,
@@ -133,6 +146,6 @@ function authServiceFactory($http, loginService,$injector,$state,$q) {
 
 }
 
-export default  authServiceFactory;
+export default authServiceFactory;
 
 

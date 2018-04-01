@@ -44,7 +44,7 @@ function loginServiceFactory($q, $http, $state, $stateParams,$location) {
             console.log("未登录，跳转到登录页");
             // TODO 登录跳转前访问的最后一个URl(backUrl) 保存到 localStorage 中
             // store.set('login_backUrl', backUrl);
-            $state.go("main.wxLogin",({backUrl:$location.absUrl(),brandAppId:$stateParams.brandAppId}))
+            $state.go("main.wxLogin",({backUrl:$location.absUrl()}))
         } else {
             // getAuthorities();
             // alert('loginCtl');
